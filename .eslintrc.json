@@ -43,7 +43,8 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/no-var-requires": "off"
+    "@typescript-eslint/no-var-requires": "off",
+    "import/no-extraneous-dependencies": ["warn"]
   },
   "settings": {
     "react": {
@@ -51,5 +52,5 @@
       "version": "detect"
     }
   },
-  "ignorePatterns": ["vite.config.ts", "src/vite-env.d.ts"]
+  "ignorePatterns": ["vite.config.ts", "src/vite-env.d.ts", "jest.config.ts"]
 }
