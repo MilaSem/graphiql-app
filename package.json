@@ -9,14 +9,15 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext ts,tsx --fix",
     "format:fix": "prettier --write 'src/**/*.{ts,tsx,scss,css,json}'",
-    "format": "prettier --write 'src/**/*.{ts,tsx,scss,css,json}' & eslint . --ext ts,tsx --fix",
+    "format": "prettier --write 'src/**/*.{ts,tsx,scss,css,json}' & eslint . --ext ts,tsx,scss --fix",
     "preview": "vite preview",
     "prepare": "husky install",
     "test": "jest --coverage"
   },
   "lint-staged": {
-    "**/*.{ts,tsx,scss,css}": "npm run format",
-    "json": "format:fix"
+    "**/*.{ts,tsx}": "npm run format",
+    "**/*.{css,scss}": "npm run format:fix"
+
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -30,6 +31,7 @@
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.1",
     "@types/jest": "^29.5.11",
+    "@types/node": "^20.10.4",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
