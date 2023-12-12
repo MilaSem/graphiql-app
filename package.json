@@ -17,14 +17,15 @@
   "lint-staged": {
     "**/*.{ts,tsx}": "npm run format",
     "**/*.{css,scss}": "npm run format:fix"
-
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.0.1",
+    "firebase": "^10.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.1",
-    "@reduxjs/toolkit": "^2.0.1",
-    "react-redux": "^9.0.2"
+    "react-firebase-hooks": "^5.1.1",
+    "react-redux": "^9.0.2",
+    "react-router-dom": "^6.20.1"
   },
   "devDependencies": {
     "@testing-library/dom": "^9.3.3",
