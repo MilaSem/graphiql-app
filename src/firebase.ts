@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { FirebaseError, initializeApp } from 'firebase/app';
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -19,18 +19,19 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
 
 export const logIn = async (email: string, password: string): Promise<void> => {
   try {
-    await signInWithEmailAndPassword(auth, email, password);
+    const res = await signInWithEmailAndPassword(auth, email, password);
+    localStorage.setItem('uid', res.user.uid);
   } catch (err) {
-    console.log(err);
+    if (err instanceof FirebaseError) localStorage.setItem('error', err.code);
   }
 };
 
-export const register = async (
+export const registerUser = async (
   name: string,
   email: string,
   password: string,
