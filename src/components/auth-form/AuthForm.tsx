@@ -56,7 +56,8 @@ export const AuthForm: FC = () => {
           </div>
           <input
             className="auth-input"
-            type="text"
+            type="password"
+            role="textbox"
             placeholder="Enter password"
             {...register('password')}
           ></input>
