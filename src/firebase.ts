@@ -17,7 +17,6 @@ const firebaseConfig = {
   measurementId: 'G-D8VC2XLRW7',
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
@@ -52,4 +51,5 @@ export const registerUser = async (
 
 export const logout = async (): Promise<void> => {
   await signOut(auth);
+  localStorage.removeItem('uid');
 };

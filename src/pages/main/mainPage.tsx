@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db, logout } from '../../firebase';
 import { query, collection, getDocs, where } from 'firebase/firestore';
-// import { Loader } from "../../components/loader/Loader";
+import { Loader } from '../../components/loader/Loader';
 
 export const MainPage: FC = () => {
   const [name, setName] = useState('');
@@ -28,14 +28,25 @@ export const MainPage: FC = () => {
 
   useEffect(() => {
     if (loading) return;
-    if (user === null) { navigate('/'); return; }
+    if (!user) {
+      navigate('/');
+      return;
+    }
     void fetchUserName();
   }, [user, loading]);
 
   return (
     <>
-      <h3> User {name} logged</h3>
-      <button onClick={handleLogOut}>log-out</button>
+      {loading
+        ? (
+        <Loader />
+        )
+        : (
+        <>
+          <h3> User {name} logged</h3>
+          <button onClick={handleLogOut}>log-out</button>
+        </>
+        )}
     </>
   );
 };

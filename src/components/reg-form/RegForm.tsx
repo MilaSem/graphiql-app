@@ -1,6 +1,6 @@
 import { type FC, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { auth, registerUser } from '../../firebase';
 import { useForm, type FieldValues } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -36,9 +36,10 @@ export const RegForm: FC = () => {
         <Loader />
         )
         : (
-        <form className="registration-form" onSubmit={handleSubmit(onSubmit)}>
-          <h3 className="registration-header">Registration</h3>
+        <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
+          <h3 className="auth-header">Registration</h3>
           <input
+            className="auth-input"
             type="text"
             placeholder="Enter your name"
             {...register('name')}
@@ -47,6 +48,7 @@ export const RegForm: FC = () => {
             {errors?.name && <p>{errors?.name?.message ?? 'Error'}</p>}
           </div>
           <input
+            className="auth-input"
             type="text"
             placeholder="Enter email"
             {...register('email')}
@@ -55,6 +57,7 @@ export const RegForm: FC = () => {
             {errors?.email && <p>{errors?.email?.message ?? 'Error'}</p>}
           </div>
           <input
+            className="auth-input"
             type="text"
             placeholder="Confirm email"
             {...register('confirmEmail')}
@@ -65,6 +68,7 @@ export const RegForm: FC = () => {
             )}
           </div>
           <input
+            className="auth-input"
             type="text"
             placeholder="Enter password"
             {...register('password')}
@@ -73,6 +77,7 @@ export const RegForm: FC = () => {
             {errors?.password && <p>{errors?.password?.message ?? 'Error'}</p>}
           </div>
           <input
+            className="auth-input"
             type="text"
             placeholder="Confirm password"
             {...register('confirmPassword')}
@@ -82,9 +87,15 @@ export const RegForm: FC = () => {
               <p>{errors?.confirmPassword?.message ?? 'Error'}</p>
             )}
           </div>
-          <button type="submit" className="submit-button" disabled={!isValid}>
-            Submit
-          </button>
+          <div className="buttons-container">
+            <div>
+              <Link to={'/sign-in'}>Sign-in</Link>
+              <p className="auth-description">if you are already registred</p>
+            </div>
+            <button type="submit" className="submit-button" disabled={!isValid}>
+              Submit
+            </button>
+          </div>
         </form>
         )}
     </>
