@@ -1,0 +1,3 @@
+describe('Footer component:', () => {
+  it('', () => {});
+});

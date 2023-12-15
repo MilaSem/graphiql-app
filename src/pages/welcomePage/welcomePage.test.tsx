@@ -1,0 +1,3 @@
+describe('Welcome page:', () => {
+  it('', () => {});
+});
