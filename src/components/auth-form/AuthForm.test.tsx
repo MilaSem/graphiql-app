@@ -24,7 +24,7 @@ describe('AuthForm component:', () => {
     await act(async () => {
       fireEvent.click(button);
     });
-    expect(await screen.findByText(/minimum 8 symbols/)).toBeInTheDocument();
+    expect(await screen.findByText(/enter your email/)).toBeInTheDocument();
     expect(
       await screen.findByText(/password must be at least 8 characters/),
     ).toBeInTheDocument();
