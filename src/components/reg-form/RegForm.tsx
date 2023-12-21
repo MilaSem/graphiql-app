@@ -1,16 +1,16 @@
-import { type FC, useEffect } from 'react';
+import { type FC } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { auth, registerUser } from '../../firebase';
 import { useForm, type FieldValues } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaReg } from '../../yup/Schema';
 import { Loader } from '../../components/loader/Loader';
 import './RegForm.scss';
+import React from 'react';
 
 export const RegForm: FC = () => {
-  const navigate = useNavigate();
-  const [user, loading] = useAuthState(auth);
+  const [, loading] = useAuthState(auth);
 
   const {
     register,
@@ -23,11 +23,6 @@ export const RegForm: FC = () => {
     await registerUser(data.name, data.email, data.password);
     reset();
   };
-
-  useEffect(() => {
-    if (loading) return;
-    if (user) navigate('/main');
-  }, [user, loading]);
 
   return (
     <>

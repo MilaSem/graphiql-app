@@ -3,6 +3,7 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 import { RegForm } from './RegForm';
 import { BrowserRouter } from 'react-router-dom';
 import * as firebase from '../../firebase';
+import React from 'react';
 
 describe('AuthForm component:', () => {
   it('Renders login form', async () => {

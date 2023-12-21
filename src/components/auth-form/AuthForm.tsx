@@ -1,16 +1,16 @@
 import { type FC, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { auth, logIn } from '../../firebase';
 import { useForm, type FieldValues } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaAuth } from '../../yup/Schema';
 import { Loader } from '../../components/loader/Loader';
 import './AuthForm.scss';
+import React from 'react';
 
 export const AuthForm: FC = () => {
-  const navigate = useNavigate();
-  const [user, loading] = useAuthState(auth);
+  const [, loading] = useAuthState(auth);
   let customError = '';
   if (localStorage.getItem('error')) customError = 'invalid login or password';
 
@@ -25,11 +25,6 @@ export const AuthForm: FC = () => {
     await logIn(data.email, data.password);
     reset();
   };
-
-  useEffect(() => {
-    if (loading) return;
-    if (user) navigate('/main');
-  }, [user, loading]);
 
   useEffect(() => {
     localStorage.removeItem('error');
