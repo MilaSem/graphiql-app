@@ -1,15 +1,15 @@
 import React from 'react';
 import { type FC, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db, logout } from '../../firebase';
 import { query, collection, getDocs, where } from 'firebase/firestore';
-import { Loader } from '../../components/loader/Loader';
 
-export const MainPage: FC = () => {
+export const UserInfo: FC = () => {
   const [name, setName] = useState('');
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
+
   const fetchUserName = async (): Promise<void> => {
     try {
       const q = query(collection(db, 'users'), where('uid', '==', user?.uid));
@@ -27,25 +27,26 @@ export const MainPage: FC = () => {
   };
 
   useEffect(() => {
-    if (loading) return;
     if (!user) {
       navigate('/');
       return;
     }
     void fetchUserName();
-  }, [user, loading]);
+  }, [user]);
 
   return (
     <>
-      {loading
+      {user
         ? (
-        <Loader />
-        )
-        : (
         <>
           <h3> User {name} logged</h3>
           <button onClick={handleLogOut}>log-out</button>
         </>
+        )
+        : (
+        <button>
+          <Link to={'/sign-in'}>SignIn</Link>
+        </button>
         )}
     </>
   );

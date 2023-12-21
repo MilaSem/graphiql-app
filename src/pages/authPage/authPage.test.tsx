@@ -1,3 +1,0 @@
-describe('Auth page:', () => {
-  it('', () => {});
-});

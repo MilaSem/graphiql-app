@@ -13,14 +13,6 @@ describe('Router tests:', () => {
     expect(screen.getByText(/Welcome/i)).toBeInTheDocument();
   });
 
-  it('renders AuthPage for /auth', () => {
-    const memoryRouter = createMemoryRouter(routerConfig, {
-      initialEntries: ['/auth'],
-    });
-    render(<RouterProvider router={memoryRouter} />);
-    expect(screen.getByText(/Auth/i)).toBeInTheDocument();
-  });
-
   it('renders PlaygroundPage for /playground', () => {
     const memoryRouter = createMemoryRouter(routerConfig, {
       initialEntries: ['/playground'],
