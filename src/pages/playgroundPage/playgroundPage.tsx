@@ -3,6 +3,7 @@ import { type FC } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
+import CodeMirror from '@uiw/react-codemirror';
 
 import './playgroundPage.scss';
 
@@ -16,5 +17,16 @@ export const PlaygroundPage: FC = () => {
     }
   }, [user]);
 
-  return <>Playground page works!</>;
+  return (
+    <CodeMirror
+      width="400px"
+      height="500px"
+      theme="dark"
+      role="textbox"
+      aria-multiline
+      style={{ textAlign: 'left' }}
+      tabIndex={2}
+      placeholder={'implement your code'}
+    />
+  );
 };
