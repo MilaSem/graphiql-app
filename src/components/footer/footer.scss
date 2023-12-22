@@ -1,0 +1,46 @@
+.footer {
+  position: relative;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+  background-color: rgb(49, 42, 51);
+  color: white;
+}
+
+.footer-link {
+  position: relative;
+  padding: 2px 0;
+  color: rgb(225, 233, 118);
+  transition: 0.3s;
+}
+
+.footer-link:hover {
+  color: rgb(215, 230, 16);
+}
+
+.footer-link::after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: '';
+  display: block;
+  height: 1px;
+  right: 0;
+  position: absolute;
+  background-color: rgb(215, 230, 16);
+  transition:
+    width 0.5s ease 0s,
+    right 0.5s ease 0s;
+  width: 0;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+  right: 0;
+}
+
+.footer-image {
+  width: 60px;
+}
