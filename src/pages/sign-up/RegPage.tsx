@@ -11,7 +11,7 @@ export const RegPage: FC = () => {
 
   useEffect(() => {
     if (loading) return;
-    if (user) navigate('/playground');
+    if (user) navigate('/qraphql');
   }, [user, loading]);
 
   return <>{!user && <RegForm />}</>;

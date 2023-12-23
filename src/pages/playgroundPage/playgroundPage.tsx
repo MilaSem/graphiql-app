@@ -19,8 +19,8 @@ export const PlaygroundPage: FC = () => {
 
   return (
     <CodeMirror
-      width="400px"
-      height="500px"
+      minWidth="400px"
+      minHeight="100px"
       theme="dark"
       role="textbox"
       aria-multiline

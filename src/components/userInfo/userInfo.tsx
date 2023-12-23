@@ -6,6 +6,8 @@ import { auth, db, logout } from '../../firebase';
 import { query, collection, getDocs, where } from 'firebase/firestore';
 import Button from '@mui/material/Button';
 
+import './userInfo.scss';
+
 export const UserInfo: FC = () => {
   const [name, setName] = useState('');
   const [user] = useAuthState(auth);
@@ -41,15 +43,25 @@ export const UserInfo: FC = () => {
         ? (
         <>
           <h3> User {name} logged</h3>
-          <Button variant="outlined" size="small" onClick={handleLogOut}>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={handleLogOut}
+            className="button"
+          >
             log-out
           </Button>
         </>
         )
         : (
-        <button>
+        <Button
+          variant="contained"
+          size="small"
+          color="secondary"
+          className="button"
+        >
           <Link to={'/sign-in'}>SignIn</Link>
-        </button>
+        </Button>
         )}
     </>
   );
