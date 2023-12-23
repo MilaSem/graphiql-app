@@ -1,5 +1,5 @@
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100vw;
@@ -8,6 +8,7 @@
   align-items: center;
   padding: 1rem 2rem;
   background-color: #f3eeaa;
+  box-shadow: 0 5px 5px rgba(48, 48, 48, 0.5);
 }
 
 .header-lang {
