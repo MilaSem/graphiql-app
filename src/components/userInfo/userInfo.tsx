@@ -44,12 +44,13 @@ export const UserInfo: FC = () => {
         <>
           <h3> User {name} logged</h3>
           <Button
+            sx={{ bgcolor: '#f9f9f9' }}
             variant="outlined"
             size="small"
             onClick={handleLogOut}
             className="button"
           >
-            log-out
+            LogOut
           </Button>
         </>
         )

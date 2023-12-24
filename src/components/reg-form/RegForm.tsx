@@ -6,7 +6,6 @@ import { useForm, type FieldValues } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaReg } from '../../yup/Schema';
 import { Loader } from '../../components/loader/Loader';
-import './RegForm.scss';
 import React from 'react';
 
 export const RegForm: FC = () => {
