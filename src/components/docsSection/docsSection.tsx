@@ -18,7 +18,7 @@ export const DocsSection: FC = () => {
     <>
       <aside className="aside">
         <IconButton
-          aria-aria-label="docs"
+          aria-label="docs"
           color={isVisible ? 'primary' : 'default'}
           onClick={handleClick}
         >
