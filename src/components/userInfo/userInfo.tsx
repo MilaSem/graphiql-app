@@ -42,7 +42,7 @@ export const UserInfo: FC = () => {
         <>
           <h3 className="user-info"> User {name} logged</h3>
           <button className="user-button-out" onClick={handleLogOut}>
-            log-out
+            Log-out
           </button>
         </>
         )
