@@ -1,13 +1,25 @@
-import { type FC } from 'react';
+import { type FC, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { UserInfo } from '../userInfo/userInfo';
 import './header.scss';
 import React from 'react';
 
 export const Header: FC = () => {
+  const [clasName, setClassName] = useState('header');
+
+  const handleScroll = (): void => {
+    if (window.scrollY > 0) setClassName('header sticky');
+    if (window.scrollY === 0) setClassName('header');
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => { window.removeEventListener('scroll', handleScroll); };
+  });
+
   return (
     <>
-      <header className="header">
+      <header className={clasName}>
         <nav className="header-nav">
           <NavLink
             to={'/'}
