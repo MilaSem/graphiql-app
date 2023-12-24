@@ -14,7 +14,9 @@ export const Header: FC = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-    return () => { window.removeEventListener('scroll', handleScroll); };
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   });
 
   return (
