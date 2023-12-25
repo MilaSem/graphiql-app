@@ -3,8 +3,8 @@ import { type FC } from 'react';
 
 import './requestSection.scss';
 import { InputApiUrl } from '../inputApiUrl/inputApiUrl';
-import { RequestOptions } from '../requestOptions/requestOptions';
 import { RequestBody } from '../requestBody/requestBody';
+import { RequestOptions } from '../requestOptions/requestOptions';
 
 export const RequestSection: FC = () => {
   return (

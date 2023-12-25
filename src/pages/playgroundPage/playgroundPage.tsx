@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './playgroundPage.scss';
 import { DocsSection } from '../../components/docsSection/docsSection';
-import { PlaygroundSection } from '../../components/playgroundSection/playgroundSection';
+import { PlaygroundSection } from '../../components/graphqlComponents/playgroundSection/playgroundSection';
 
 export const PlaygroundPage: FC = () => {
   const [user] = useAuthState(auth);

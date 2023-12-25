@@ -6,6 +6,8 @@ import IconButton from '@mui/material/IconButton';
 import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 import './requestOptions.scss';
+import { RequestHeaders } from '../requestHeaders/requestHeaders';
+import { RequestVariables } from '../requestVariables/requestVariables';
 
 export const RequestOptions: FC = () => {
   const [isVisible, setVisible] = useState(false);
@@ -53,8 +55,7 @@ export const RequestOptions: FC = () => {
         </div>
         {isVisible && (
           <div className="request-body-editors">
-            editors work
-            {isHeaders ? <div>Headers</div> : <div>Variables</div>}
+            {isHeaders ? <RequestHeaders /> : <RequestVariables />}
           </div>
         )}
       </div>
