@@ -4,11 +4,11 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
 
-import './playgroundPage.scss';
-import { DocsSection } from '../../components/docsSection/docsSection';
-import { PlaygroundSection } from '../../components/playgroundSection/playgroundSection';
+import './playgroundSection.scss';
+import { RequestSection } from '../requestSection/requestSection';
+import { ResponseSection } from '../responseSection/responseSection';
 
-export const PlaygroundPage: FC = () => {
+export const PlaygroundSection: FC = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -20,9 +20,9 @@ export const PlaygroundPage: FC = () => {
 
   return (
     <>
-      <div className="playground-page">
-        <DocsSection />
-        <PlaygroundSection />
+      <div className="playground-section">
+        <RequestSection />
+        <ResponseSection />
       </div>
     </>
   );

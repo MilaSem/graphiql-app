@@ -42,9 +42,8 @@ export const UserInfo: FC = () => {
       {user
         ? (
         <>
-          <h3> User {name} logged</h3>
+          <h3>{name}</h3>
           <Button
-            sx={{ bgcolor: '#f9f9f9' }}
             variant="outlined"
             size="small"
             onClick={handleLogOut}

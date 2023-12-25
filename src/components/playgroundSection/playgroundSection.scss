@@ -1,0 +1,13 @@
+.playground-section {
+  display: flex;
+  flex-direction: row;
+
+  gap: 1rem;
+  // margin-top: 2rem;
+}
+
+@media (max-width: 678px) {
+  .playground-section {
+    flex-direction: column;
+  }
+}

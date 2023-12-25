@@ -3,7 +3,6 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 import { DocsSection } from './docsSection';
 import '@testing-library/jest-dom';
 
-// Mocking the lazy-loaded component
 jest.mock('../documentation/documrntation', () => {
   return {
     __esModule: true,
@@ -28,7 +27,6 @@ describe('DocsSection component', () => {
     const iconButton = screen.getByLabelText('docs');
     fireEvent.click(iconButton);
 
-    // Wait for lazy-loaded component to render
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 0));
     });
@@ -44,7 +42,6 @@ describe('DocsSection component', () => {
     const iconButton = screen.getByLabelText('docs');
     fireEvent.click(iconButton);
 
-    // Wait for lazy-loaded component to render
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 0));
     });
@@ -52,10 +49,8 @@ describe('DocsSection component', () => {
     const docsContainer = screen.getByText('Mocked Documentation Component');
     expect(docsContainer).toBeInTheDocument();
 
-    // Click again to hide Docs
     fireEvent.click(iconButton);
 
-    // Wait for lazy-loaded component to unmount
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 0));
     });
