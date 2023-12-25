@@ -11,6 +11,7 @@ import './inputApiUrl.scss';
 export const InputApiUrl: FC = () => {
   const handleBlur = (e: FocusEvent<HTMLInputElement>): void => {
     const val = (e.target as HTMLInputElement)?.value;
+    // todo: implement logic - saving to redux with preffix
     console.log('API changed', val);
   };
   return (

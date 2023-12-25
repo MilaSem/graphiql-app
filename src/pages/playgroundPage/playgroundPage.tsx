@@ -10,6 +10,7 @@ import { PlaygroundSection } from '../../components/playgroundSection/playground
 
 export const PlaygroundPage: FC = () => {
   const [user] = useAuthState(auth);
+
   const navigate = useNavigate();
 
   useEffect(() => {
