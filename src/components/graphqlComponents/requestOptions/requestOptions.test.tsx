@@ -23,11 +23,11 @@ describe('RequestOptions component', () => {
     const variablesButton = screen.getByText(/variables/i);
     fireEvent.click(expandButton);
 
-    fireEvent.click(headersButton);
-    expect(screen.getByText(/headers \(json\)/i)).toBeInTheDocument();
-
     fireEvent.click(variablesButton);
     expect(screen.getByText(/variables \(json\)/i)).toBeInTheDocument();
+
+    fireEvent.click(headersButton);
+    expect(screen.getByText(/headers \(json\)/i)).toBeInTheDocument();
   });
 
   test('expands and collapses editors correctly', () => {

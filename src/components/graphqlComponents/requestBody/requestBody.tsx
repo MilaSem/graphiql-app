@@ -1,31 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { type FC } from 'react';
-import CodeMirror from '@uiw/react-codemirror';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import Button from '@mui/material/Button';
+import AutoFixHighRoundedIcon from '@mui/icons-material/AutoFixHighRounded';
+import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 
 import './requestBody.scss';
 
 export const RequestBody: FC = () => {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const [grqphqlValue, setGraphqlValue] = useState('');
+  const getGrqphQlRequest = (value: string): void => {
+    // transform value here
+
+    setGraphqlValue(value);
+    console.log('graphQl', value);
+  };
 
   return (
     <>
-      <div className="request-section">
+      <div className="request-body">
         <Button size="small" color="secondary" variant="outlined">
-          Prettify code
+          <AutoFixHighRoundedIcon />
         </Button>
-        {/* Editor */}
 
-        <CodeMirror
-          // minWidth="400px"
-          minHeight="100px"
-          theme={prefersDarkMode ? 'dark' : 'light'}
+        <CodeMirrorEditor
+          handleEditorValue={getGrqphQlRequest}
+          value={grqphqlValue}
+          height={'calc(50vh)'}
+          editable={true}
+          lang="graphql"
           role="textbox"
-          aria-multiline
-          style={{ textAlign: 'left', border: 'solid 2px #eee' }}
-          tabIndex={2}
-          placeholder={'implement your code'}
+          placeholder={'implement your code here (graphQl)'}
         />
       </div>
     </>

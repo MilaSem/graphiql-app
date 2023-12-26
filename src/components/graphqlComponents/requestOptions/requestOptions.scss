@@ -1,9 +1,10 @@
-.request-body {
+.request-options {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
-.request-body-buttons {
+.request-options-buttons {
   display: flex;
   justify-content: space-between;
 }
