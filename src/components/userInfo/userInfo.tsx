@@ -4,8 +4,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db, logout } from '../../firebase';
 import { query, collection, getDocs, where } from 'firebase/firestore';
-import Button from '@mui/material/Button';
-
 import './userInfo.scss';
 
 export const UserInfo: FC = () => {
@@ -42,26 +40,18 @@ export const UserInfo: FC = () => {
       {user
         ? (
         <>
-          <h3> User {name} logged</h3>
-          <Button
-            variant="outlined"
-            size="small"
-            onClick={handleLogOut}
-            className="button"
-          >
-            log-out
-          </Button>
+          <h3 className="user-info"> User {name} logged</h3>
+          <button className="user-button-out" onClick={handleLogOut}>
+            Log-out
+          </button>
         </>
         )
         : (
-        <Button
-          variant="contained"
-          size="small"
-          color="secondary"
-          className="button"
-        >
-          <Link to={'/sign-in'}>SignIn</Link>
-        </Button>
+        <button className="user-button">
+          <Link to={'/sign-in'} className="user-link">
+            SignIn
+          </Link>
+        </button>
         )}
     </>
   );
