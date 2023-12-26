@@ -4,6 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db, logout } from '../../firebase';
 import { query, collection, getDocs, where } from 'firebase/firestore';
+import './userInfo.scss';
 
 export const UserInfo: FC = () => {
   const [name, setName] = useState('');
@@ -39,13 +40,17 @@ export const UserInfo: FC = () => {
       {user
         ? (
         <>
-          <h3> User {name} logged</h3>
-          <button onClick={handleLogOut}>log-out</button>
+          <h3 className="user-info"> User {name} logged</h3>
+          <button className="user-button-out" onClick={handleLogOut}>
+            Log-out
+          </button>
         </>
         )
         : (
-        <button>
-          <Link to={'/sign-in'}>SignIn</Link>
+        <button className="user-button">
+          <Link to={'/sign-in'} className="user-link">
+            SignIn
+          </Link>
         </button>
         )}
     </>

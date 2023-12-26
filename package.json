@@ -12,7 +12,7 @@
     "format": "prettier --write 'src/**/*.{ts,tsx,scss,css,json}' & eslint . --ext ts,tsx,scss --fix",
     "preview": "vite preview",
     "prepare": "husky install",
-    "test": "jest --coverage"
+    "test": "jest --coverage --silent"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": "npm run format",
