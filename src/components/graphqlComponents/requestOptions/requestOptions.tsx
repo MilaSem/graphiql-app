@@ -18,7 +18,11 @@ export const RequestOptions: FC = () => {
   };
 
   const toggleHeaders = (): void => {
-    setHeaders(!isHeaders);
+    setHeaders(true);
+  };
+
+  const toggleVariables = (): void => {
+    setHeaders(false);
   };
 
   return (
@@ -37,7 +41,7 @@ export const RequestOptions: FC = () => {
               Headers
             </Button>
             <Button
-              onClick={toggleHeaders}
+              onClick={toggleVariables}
               color={!isHeaders && isVisible ? 'secondary' : 'primary'}
             >
               Variables
