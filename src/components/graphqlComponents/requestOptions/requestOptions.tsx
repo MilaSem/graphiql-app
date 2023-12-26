@@ -47,7 +47,10 @@ export const RequestOptions: FC = () => {
               Variables
             </Button>
           </ButtonGroup>
-          <IconButton onClick={expandEditors}>
+          <IconButton
+            onClick={expandEditors}
+            aria-label={!isVisible ? 'expand-editors' : 'collapse-editors'}
+          >
             {isVisible
               ? (
               <ExpandLessRoundedIcon color="primary" />

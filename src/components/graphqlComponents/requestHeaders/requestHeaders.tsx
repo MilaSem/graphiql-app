@@ -17,6 +17,7 @@ export const RequestHeaders: FC = () => {
       console.log('wrong json', err.message);
     }
   };
+
   return (
     <>
       <div className="request-headers">

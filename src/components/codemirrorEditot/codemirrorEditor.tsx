@@ -34,6 +34,7 @@ export const CodeMirrorEditor: FC<CodeMirrorEditorProps> = ({
           onChange={handleValue}
           onBlur={handleBlur}
           tabIndex={2}
+          role="form"
         />
       </div>
     </>
