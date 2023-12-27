@@ -1,0 +1,9 @@
+.playground-page {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+
+  width: 100%;
+  // todo: correct this value
+  min-height: calc(100vh - 200px);
+}

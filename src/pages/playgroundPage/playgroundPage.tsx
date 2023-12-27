@@ -3,12 +3,13 @@ import { type FC } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
-import CodeMirror from '@uiw/react-codemirror';
-
+import { DocsSection } from '../../components/docsSection/docsSection';
+import { PlaygroundSection } from '../../components/graphqlComponents/playgroundSection/playgroundSection';
 import './playgroundPage.scss';
 
 export const PlaygroundPage: FC = () => {
   const [user] = useAuthState(auth);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,15 +19,11 @@ export const PlaygroundPage: FC = () => {
   }, [user]);
 
   return (
-    <CodeMirror
-      minWidth="400px"
-      minHeight="100px"
-      theme="dark"
-      role="textbox"
-      aria-multiline
-      style={{ textAlign: 'left' }}
-      tabIndex={2}
-      placeholder={'implement your code'}
-    />
+    <>
+      <div className="playground-page">
+        <DocsSection />
+        <PlaygroundSection />
+      </div>
+    </>
   );
 };

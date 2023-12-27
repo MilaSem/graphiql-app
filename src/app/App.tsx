@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { type FC } from 'react';
 import './App.scss';
 import { router } from '../router/router';
 import { RouterProvider } from 'react-router-dom';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Provider } from 'react-redux';
+import { store } from '../store';
 
 export const App: FC = () => {
-  return <RouterProvider router={router} />;
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: prefersDarkMode ? 'dark' : 'light',
+        },
+      }),
+    [prefersDarkMode],
+  );
+  return (
+    <>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </Provider>
+    </>
+  );
 };

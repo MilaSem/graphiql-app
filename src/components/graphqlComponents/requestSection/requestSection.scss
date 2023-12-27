@@ -1,0 +1,13 @@
+@use '../../../styles/mixins' as mx;
+.request-section {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (max-width: 678px) {
+  .request-section {
+    width: 100%;
+  }
+}

@@ -1,0 +1,19 @@
+@use '../../../styles/mixins' as mx;
+.playground-section {
+  display: flex;
+  flex-direction: row;
+  width: calc(100% - 56px);
+
+  gap: 0.5rem;
+  @include mx.border-light;
+  @include mx.body-height;
+
+  position: relative;
+  padding: 1rem;
+}
+
+@media (max-width: 678px) {
+  .playground-section {
+    flex-direction: column;
+  }
+}

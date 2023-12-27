@@ -6,10 +6,10 @@ import {
 } from 'react-router-dom';
 import { WelcomePage } from '../pages/welcomePage/welcomePage';
 import { Layout } from '../pages/layout/layout';
-import { PlaygroundPage } from '../pages/playgroundPage/playgroundPage';
 import { NotFoundPage } from '../pages/notFoundPage/notFoundPage';
 import { AuthPage } from '../pages/sign-in/AuthPage';
 import { RegPage } from '../pages/sign-up/RegPage';
+import { PlaygroundPage } from '../pages/playgroundPage/playgroundPage';
 
 export const routerConfig = createRoutesFromElements(
   <Route path="/" element={<Layout />}>

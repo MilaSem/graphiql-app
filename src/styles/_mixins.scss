@@ -1,0 +1,14 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin body-height {
+  min-height: calc(100vh - 200px);
+}
+
+@mixin border-light {
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+}
