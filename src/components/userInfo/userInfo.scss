@@ -1,3 +1,22 @@
-.button {
-  text-transform: none !important;
+.user-button {
+  padding: 0;
+}
+
+.user-link {
+  padding: 1rem;
+  line-height: 32px;
+}
+
+.user-button-out {
+  padding: 0.35rem 1rem;
+}
+
+.user-info {
+  font-size: 16px;
+}
+
+@media (max-width: 540px) {
+  .user-info {
+    font-size: 14px;
+  }
 }
