@@ -25,7 +25,7 @@ export const RequestBody: FC = () => {
         <CodeMirrorEditor
           handleEditorValue={getGrqphQlRequest}
           value={grqphqlValue}
-          height={'calc(50vh)'}
+          height={'40vh'}
           editable={true}
           lang="graphql"
           role="textbox"

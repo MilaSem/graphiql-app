@@ -5,7 +5,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import './codeMirrorEditor.scss';
 
 interface CodeMirrorEditorProps extends ReactCodeMirrorProps {
-  handleEditorValue: (v: string) => void
+  handleEditorValue?: (v: string) => void
   getValue?: () => void
 }
 
@@ -21,6 +21,7 @@ export const CodeMirrorEditor: FC<CodeMirrorEditorProps> = ({
   };
 
   const handleBlur = (): void => {
+    if (!handleEditorValue) return;
     handleEditorValue(value);
   };
   return (
