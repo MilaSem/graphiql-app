@@ -37,12 +37,10 @@ const graphQlSlice = createSlice({
       state.response = action.payload;
     },
     prettifyCode(state) {
-      const { request, response, headers, variables } = state;
-      state.request = prettifyGraphQl(request);
-      state.response = prettifyJson(response);
-
-      state.headers = prettifyJson(headers);
-      state.variables = prettifyJson(variables);
+      state.request = prettifyGraphQl(state.request);
+      state.response = prettifyJson(state.response);
+      state.headers = prettifyJson(state.headers);
+      state.variables = prettifyJson(state.variables);
     },
   },
 });

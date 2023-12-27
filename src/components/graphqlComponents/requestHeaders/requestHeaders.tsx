@@ -1,7 +1,7 @@
 import React, { useState, type FC } from 'react';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import { useAppSelector, useAppDispatch } from '../../../store/hooks';
-import { setHeaders } from '../../../store/graphQl.slice';
+import { setHeaders } from '../../../store/graphQl/graphQl.slice';
 
 export const RequestHeaders: FC = () => {
   const headers = useAppSelector((state) => state.graphQl.headers);

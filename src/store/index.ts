@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { graphQlReduser } from './graphQl.slice';
-import { mainReduser } from './main.slice';
+import { graphQlReduser } from './graphQl/graphQl.slice';
+import { mainReduser } from './main/main.slice';
 
 export const store = configureStore({
   reducer: {

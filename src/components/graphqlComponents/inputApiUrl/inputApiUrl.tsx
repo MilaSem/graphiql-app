@@ -5,17 +5,18 @@ import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import './inputApiUrl.scss';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { setApiUrl } from '../../../store/graphQl.slice';
+import { useAppDispatch } from '../../../store/hooks';
+import { setApiUrl } from '../../../store/graphQl/graphQl.slice';
 
 export const InputApiUrl: FC = () => {
-  const apiUrl = useAppSelector((state) => state.graphQl.apiUrl);
+  // const apiUrl = useAppSelector((state) => state.graphQl.apiUrl);
   const dispatch = useAppDispatch();
 
   const handleBlur = (e: FocusEvent<HTMLInputElement>): void => {
     const val = (e.target as HTMLInputElement)?.value;
     dispatch(setApiUrl(val));
   };
+
   return (
     <>
       <div className="input-url-section">
@@ -26,7 +27,6 @@ export const InputApiUrl: FC = () => {
             startAdornment={
               <InputAdornment position="start">https://</InputAdornment>
             }
-            value={apiUrl || ''}
             label="Enter valid API"
             size="small"
             onBlur={handleBlur}

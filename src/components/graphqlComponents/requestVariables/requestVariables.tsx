@@ -1,7 +1,7 @@
 import React, { useState, type FC } from 'react';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { setVariables } from '../../../store/graphQl.slice';
+import { setVariables } from '../../../store/graphQl/graphQl.slice';
 
 export const RequestVariables: FC = () => {
   const variables = useAppSelector((state) => state.graphQl.variables);
