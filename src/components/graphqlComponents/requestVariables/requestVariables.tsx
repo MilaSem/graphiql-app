@@ -1,6 +1,5 @@
 import React, { useState, type FC } from 'react';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
-import './requestVariables.scss';
 
 export const RequestVariables: FC = () => {
   const [variablesValue, setVariablesValue] = useState({});

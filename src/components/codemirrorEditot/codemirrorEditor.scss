@@ -1,2 +1,6 @@
+@use '../../styles/mixins' as mx;
+
 .codemirror {
+  @include mx.border-light;
+  overflow: hidden;
 }

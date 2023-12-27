@@ -1,6 +1,12 @@
 .response-section {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 2rem;
   width: 30vw;
+}
+
+@media (max-width: 678px) {
+  .response-section {
+    width: calc(100vw - 100px);
+  }
 }

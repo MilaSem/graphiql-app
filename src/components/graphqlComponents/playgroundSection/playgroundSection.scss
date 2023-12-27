@@ -1,12 +1,14 @@
+@use '../../../styles/mixins' as mx;
 .playground-section {
   display: flex;
   flex-direction: row;
+  width: calc(100% - 60px);
 
-  gap: 1rem;
-  border: 1px solid #333;
-  border-radius: 0.5rem;
+  gap: 0.5rem;
+  @include mx.border-light;
+  @include mx.body-height;
+
   position: relative;
-  height: 100%;
   padding: 1rem;
 }
 

@@ -10,7 +10,12 @@ export const ResponseSection: FC = () => {
     <>
       <div className="response-section">
         <h3>Response</h3>
-        <CodeMirrorEditor value={response} editable={false} height="60vh" />
+        <CodeMirrorEditor
+          value={response}
+          editable={false}
+          height="62vh"
+          placeholder={'{}'}
+        />
       </div>
     </>
   );

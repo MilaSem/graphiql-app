@@ -1,5 +1,4 @@
 import React, { useState, type FC } from 'react';
-import './requestHeaders.scss';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 
 export const RequestHeaders: FC = () => {
