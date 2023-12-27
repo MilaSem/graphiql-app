@@ -3,10 +3,9 @@ import { type FC } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
-
-import './playgroundPage.scss';
 import { DocsSection } from '../../components/docsSection/docsSection';
 import { PlaygroundSection } from '../../components/graphqlComponents/playgroundSection/playgroundSection';
+import './playgroundPage.scss';
 
 export const PlaygroundPage: FC = () => {
   const [user] = useAuthState(auth);

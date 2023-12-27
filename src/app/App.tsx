@@ -5,6 +5,8 @@ import { router } from '../router/router';
 import { RouterProvider } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Provider } from 'react-redux';
+import { store } from '../store';
 
 export const App: FC = () => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -20,9 +22,11 @@ export const App: FC = () => {
   );
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <RouterProvider router={router} />
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </Provider>
     </>
   );
 };

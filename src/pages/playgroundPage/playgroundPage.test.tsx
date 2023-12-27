@@ -1,9 +1,10 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
-import { PlaygroundPage } from './playgroundPage';
+import { screen } from '@testing-library/react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { BrowserRouter as Router } from 'react-router-dom';
+
+import { renderWithProvider } from '../../tests/funcs/renderWithProvider';
+import { PlaygroundPage } from './playgroundPage';
 
 jest.mock('react-firebase-hooks/auth');
 
@@ -15,11 +16,7 @@ describe('PlaygroundPage component', () => {
   it('redirects to sign-in page if user is not authenticated', async () => {
     (useAuthState as jest.Mock).mockReturnValue([null, false, null]);
 
-    render(
-      <Router>
-        <PlaygroundPage />
-      </Router>,
-    );
+    renderWithProvider(<PlaygroundPage />);
 
     // todo: fix error with typeerror
   });
@@ -28,11 +25,7 @@ describe('PlaygroundPage component', () => {
     const mockUser = { uid: 'testUid' };
     (useAuthState as jest.Mock).mockReturnValueOnce([mockUser, false, null]);
 
-    render(
-      <Router>
-        <PlaygroundPage />
-      </Router>,
-    );
+    renderWithProvider(<PlaygroundPage />);
 
     expect(screen.getByText(/request/i)).toBeInTheDocument();
   });

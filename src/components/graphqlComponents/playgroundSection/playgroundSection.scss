@@ -2,7 +2,7 @@
 .playground-section {
   display: flex;
   flex-direction: row;
-  width: calc(100% - 60px);
+  width: calc(100% - 56px);
 
   gap: 0.5rem;
   @include mx.border-light;

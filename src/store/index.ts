@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { mainReduser } from './slice';
+import { graphQlReduser } from './graphQl.slice';
+import { mainReduser } from './main.slice';
 
 export const store = configureStore({
   reducer: {
     main: mainReduser,
+    graphQl: graphQlReduser,
   },
 });
 

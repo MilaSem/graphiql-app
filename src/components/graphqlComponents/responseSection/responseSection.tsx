@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { type FC } from 'react';
 
 import './responseSection.scss';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
+import { useAppSelector } from '../../../store/hooks';
 
 export const ResponseSection: FC = () => {
-  const [response] = useState('');
+  const response = useAppSelector((state) => state.graphQl.response);
   return (
     <>
       <div className="response-section">

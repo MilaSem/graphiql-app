@@ -1,11 +1,12 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { RequestOptions } from './requestOptions';
+import { renderWithProvider } from '../../../tests/funcs/renderWithProvider';
 
 describe('RequestOptions component', () => {
   it('renders RequestOptions component correctly', () => {
-    render(<RequestOptions />);
+    renderWithProvider(<RequestOptions />);
 
     const headersButton = screen.getByText(/headers/i);
     const variablesButton = screen.getByText(/variables/i);
@@ -15,7 +16,7 @@ describe('RequestOptions component', () => {
   });
 
   test('toggles between Headers and Variables correctly', () => {
-    render(<RequestOptions />);
+    renderWithProvider(<RequestOptions />);
 
     const expandButton = screen.getByLabelText('expand-editors');
 
@@ -31,7 +32,7 @@ describe('RequestOptions component', () => {
   });
 
   test('expands and collapses editors correctly', () => {
-    render(<RequestOptions />);
+    renderWithProvider(<RequestOptions />);
 
     const expandButton = screen.getByLabelText('expand-editors');
     fireEvent.click(expandButton);
