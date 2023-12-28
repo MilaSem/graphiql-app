@@ -6,11 +6,17 @@ import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import Button from '@mui/material/Button';
 import AutoFixHighRoundedIcon from '@mui/icons-material/AutoFixHighRounded';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { prettifyCode, setRequest } from '../../../store/graphQl/graphQl.slice';
+import {
+  prettifyCode,
+  setRequest,
+  setResponse,
+} from '../../../store/graphQl/graphQl.slice';
+import { requestData } from '../../../api/api';
 import './requestBody.scss';
 
 export const RequestBody: FC = () => {
   const request = useAppSelector((state) => state.graphQl.request);
+  const api = useAppSelector((state) => state.graphQl.apiUrl);
   const dispatch = useAppDispatch();
 
   const onPretttifyClick = (): void => {
@@ -22,6 +28,12 @@ export const RequestBody: FC = () => {
 
     dispatch(setRequest(value));
     console.log('graphQl', value);
+  };
+
+  const handleClick = async (): Promise<void> => {
+    await requestData(api, request).then((data) =>
+      dispatch(setResponse(JSON.stringify(data, null, 2))),
+    );
   };
 
   return (
@@ -36,7 +48,7 @@ export const RequestBody: FC = () => {
           >
             <AutoFixHighRoundedIcon />
           </Button>
-          <Button variant="contained" size="small">
+          <Button variant="contained" size="small" onClick={handleClick}>
             <PlayArrowRoundedIcon />
           </Button>
         </Box>

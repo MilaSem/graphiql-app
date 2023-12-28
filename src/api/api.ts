@@ -1,4 +1,4 @@
-export const requastData = async (
+export const requestData = async (
   url: string,
   query: string,
 ): Promise<void> => {
@@ -13,7 +13,7 @@ export const requastData = async (
 
 const schemaQuery = 'query {__schema{types{name,fields{name}}}}';
 
-export const requastSchema = async (
+export const requestSchema = async (
   url: string,
   query: string = schemaQuery,
 ): Promise<void> => {

@@ -1,4 +1,4 @@
-import React, { type FocusEvent, type FC } from 'react';
+import React, { type ChangeEvent, type FC } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
@@ -12,9 +12,13 @@ export const InputApiUrl: FC = () => {
   // const apiUrl = useAppSelector((state) => state.graphQl.apiUrl);
   const dispatch = useAppDispatch();
 
-  const handleBlur = (e: FocusEvent<HTMLInputElement>): void => {
+  const api = localStorage.getItem('api');
+  if (api) dispatch(setApiUrl(api));
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const val = (e.target as HTMLInputElement)?.value;
     dispatch(setApiUrl(val));
+    localStorage.setItem('api', val);
   };
 
   return (
@@ -29,7 +33,8 @@ export const InputApiUrl: FC = () => {
             }
             label="Enter valid API"
             size="small"
-            onBlur={handleBlur}
+            onChange={handleChange}
+            defaultValue={api || ''}
           />
         </FormControl>
       </div>
