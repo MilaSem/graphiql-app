@@ -25,14 +25,10 @@ export const RequestBody: FC = () => {
   };
 
   const getGrqphQlRequest = (value: string): void => {
-    // transform value here
-
     dispatch(setRequest(value));
-    console.log('graphQl', value);
   };
 
   const handleClick = async (): Promise<void> => {
-    console.log(arrHeaders);
     await requestData(api, request, arrHeaders).then((data) =>
       dispatch(setResponse(JSON.stringify(data, null, 2))),
     );

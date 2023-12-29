@@ -19,7 +19,6 @@ export const RequestHeaders: FC = () => {
       const arr: string[][] = Object.entries(headersJson);
       dispatch(setArrHeaders(arrHeaders.concat(arr)));
       dispatch(setHeaders(value));
-      console.log(headersJson);
       SetErr(false);
     } catch (error) {
       // todo: implement with snackbar

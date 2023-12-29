@@ -3,13 +3,11 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
-
 import './inputApiUrl.scss';
 import { useAppDispatch } from '../../../store/hooks';
 import { setApiUrl } from '../../../store/graphQl/graphQl.slice';
 
 export const InputApiUrl: FC = () => {
-  // const apiUrl = useAppSelector((state) => state.graphQl.apiUrl);
   const dispatch = useAppDispatch();
 
   const api = localStorage.getItem('api');
