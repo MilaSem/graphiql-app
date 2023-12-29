@@ -17,6 +17,7 @@ import './requestBody.scss';
 export const RequestBody: FC = () => {
   const request = useAppSelector((state) => state.graphQl.request);
   const api = useAppSelector((state) => state.graphQl.apiUrl);
+  const arrHeaders = useAppSelector((state) => state.graphQl.arrHeaders);
   const dispatch = useAppDispatch();
 
   const onPretttifyClick = (): void => {
@@ -31,7 +32,8 @@ export const RequestBody: FC = () => {
   };
 
   const handleClick = async (): Promise<void> => {
-    await requestData(api, request).then((data) =>
+    console.log(arrHeaders);
+    await requestData(api, request, arrHeaders).then((data) =>
       dispatch(setResponse(JSON.stringify(data, null, 2))),
     );
   };

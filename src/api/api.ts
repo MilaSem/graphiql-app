@@ -1,12 +1,11 @@
 export const requestData = async (
   url: string,
   query: string,
+  headers: string[][],
 ): Promise<void> => {
   return fetch(url, {
     method: 'POST',
-    headers: {
-      'Content-type': 'application/json',
-    },
+    headers: Object.fromEntries(headers),
     body: JSON.stringify({ query }),
   }).then(async (res) => res.json());
 };

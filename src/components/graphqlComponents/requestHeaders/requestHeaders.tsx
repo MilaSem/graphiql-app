@@ -1,10 +1,14 @@
 import React, { useState, type FC } from 'react';
 import { useAppSelector, useAppDispatch } from '../../../store/hooks';
-import { setHeaders } from '../../../store/graphQl/graphQl.slice';
+import {
+  setHeaders,
+  setArrHeaders,
+} from '../../../store/graphQl/graphQl.slice';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 
 export const RequestHeaders: FC = () => {
   const headers = useAppSelector((state) => state.graphQl.headers);
+  const arrHeaders = useAppSelector((state) => state.graphQl.arrHeaders);
   const dispatch = useAppDispatch();
   const [err, SetErr] = useState(false);
 
@@ -12,8 +16,10 @@ export const RequestHeaders: FC = () => {
     if (!value) return;
     try {
       const headersJson = JSON.parse(value);
+      const arr: string[][] = Object.entries(headersJson);
+      dispatch(setArrHeaders(arrHeaders.concat(arr)));
       dispatch(setHeaders(value));
-      console.log(headers, headersJson);
+      console.log(headersJson);
       SetErr(false);
     } catch (error) {
       // todo: implement with snackbar
