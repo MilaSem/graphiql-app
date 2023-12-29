@@ -3,20 +3,20 @@ import YupPassword from 'yup-password';
 YupPassword(yup);
 
 export const schemaReg = yup.object().shape({
-  name: yup.string().required('enter your name'),
-  email: yup.string().email().required('enter your email'),
+  name: yup.string().required('nameRequired'),
+  email: yup.string().email().required('emailRequired'),
   confirmEmail: yup
     .string()
     .oneOf([yup.ref('email')], 'emails mismatch')
-    .required('confirm your email'),
-  password: yup.string().password().required('enter password'),
+    .required('confirmEmailRequired'),
+  password: yup.string().password().required('passwordRequired'),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref('password')], 'passwords mismatch')
-    .required('confirm password'),
+    .oneOf([yup.ref('password')], 'passwordMismatch')
+    .required('passwordConfirmRequired'),
 });
 
 export const schemaAuth = yup.object().shape({
-  email: yup.string().email().required('enter your email'),
-  password: yup.string().password().required('enter password'),
+  email: yup.string().email().required('emailRequired'),
+  password: yup.string().password().required('passwordRequired'),
 });

@@ -7,6 +7,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Provider } from 'react-redux';
 import { store } from '../store';
+import { LangProvider } from '../locale/langContext';
 
 export const App: FC = () => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -23,9 +24,11 @@ export const App: FC = () => {
   return (
     <>
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <RouterProvider router={router} />
-        </ThemeProvider>
+        <LangProvider>
+          <ThemeProvider theme={theme}>
+            <RouterProvider router={router} />
+          </ThemeProvider>
+        </LangProvider>
       </Provider>
     </>
   );

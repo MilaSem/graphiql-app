@@ -1,0 +1,25 @@
+{
+  "header": {
+    "welcome": "Welcome",
+    "playground": "Playground"
+  },
+  "user": {
+    "signIn": "SignIn",
+    "signUp": "SignUp",
+    "logOut": "LogOut",
+    "logIn": "LogIn",
+    "ifNotRegister": "if you are not registred"
+  },
+  "errors": {
+    "nameRequired": "Enter your name",
+    "emailRequired": "Enter your email",
+    "confirmEmailRequired": "Confirm your email",
+    "emailMismatch": "Emails mismatch",
+    "passwordRequired": "Enter password",
+    "passwordMismatch": "Passwords mismatch",
+    "passwordConfirmRequired": "Confirm password",
+    "error": "Error"
+  },
+  "request": "request",
+  "lang": "En"
+}

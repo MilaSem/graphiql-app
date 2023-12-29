@@ -1,0 +1,25 @@
+{
+  "header": {
+    "welcome": "Главная",
+    "playground": "Песочница"
+  },
+  "user": {
+    "signIn": "Войти",
+    "signUp": "Регистрация",
+    "logOut": "Выйти",
+    "logIn": "Войти",
+    "ifNotRegister": "если вы не зарагистрированы"
+  },
+  "errors": {
+    "nameRequired": "Введите имя",
+    "emailRequired": "Введите email",
+    "confirmEmailRequired": "Подтвердите email",
+    "emailMismatch": "Email не совпадает",
+    "passwordRequired": "Введите пароль",
+    "passwordMismatch": "Пароли не совпадают",
+    "passwordConfirmRequired": "Подтвердите пароль",
+    "error": "Ошибка"
+  },
+  "request": " Запрос",
+  "lang": "Ру"
+}
