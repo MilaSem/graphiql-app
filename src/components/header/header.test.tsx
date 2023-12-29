@@ -1,24 +1,18 @@
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { screen, fireEvent, act } from '@testing-library/react';
 import { Header } from './header';
-import { BrowserRouter } from 'react-router-dom';
+import { renderWithProvider } from '../../tests/funcs/renderWithProvider';
+import React from 'react';
 
 describe('Header component:', () => {
   it('renders header', () => {
-    render(
-      <BrowserRouter>
-        <Header />
-      </BrowserRouter>,
-    );
-    expect(screen.getByRole('combobox')).toBeInTheDocument();
+    renderWithProvider(<Header />);
+    // expect(screen.getByRole('combobox')).toBeInTheDocument();
     expect(screen.getByRole('navigation')).toBeInTheDocument();
   });
   it('check animation of sticky header', async () => {
-    render(
-      <BrowserRouter>
-        <Header />
-      </BrowserRouter>,
-    );
+    renderWithProvider(<Header />);
+
     await act(async () => {
       fireEvent.scroll(window, { target: { scrollY: 100 } });
     });

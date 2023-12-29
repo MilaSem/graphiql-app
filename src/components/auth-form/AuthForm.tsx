@@ -9,6 +9,7 @@ import { Loader } from '../../components/loader/Loader';
 import './AuthForm.scss';
 import React from 'react';
 import { LangContext } from '../../locale/langContext';
+import { type ErrorsKeys } from '../../model/interfaces';
 
 export const AuthForm: FC = () => {
   const { dictionary } = useContext(LangContext);
@@ -51,7 +52,10 @@ export const AuthForm: FC = () => {
           ></input>
           <div className="error-string">
             {errors?.email?.message && (
-              <p>{dictionary.errors[errors.email.message] || 'Error'}</p>
+              <p>
+                {dictionary.errors[errors.email.message as keyof ErrorsKeys] ||
+                  'Error'}
+              </p>
             )}
           </div>
           <input
@@ -64,7 +68,9 @@ export const AuthForm: FC = () => {
           <div className="error-string">
             {errors?.password?.message && (
               <p>
-                {dictionary.errors[errors.password.message] ||
+                {dictionary.errors[
+                  errors.password.message as keyof ErrorsKeys
+                ] ||
                   errors.password.message ||
                   dictionary.errors.error}
               </p>
