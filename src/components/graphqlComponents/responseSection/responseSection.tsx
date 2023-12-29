@@ -1,6 +1,5 @@
 import React from 'react';
 import { type FC } from 'react';
-
 import './responseSection.scss';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import { useAppSelector } from '../../../store/hooks';

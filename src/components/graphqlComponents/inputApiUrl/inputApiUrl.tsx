@@ -32,7 +32,7 @@ export const InputApiUrl: FC = () => {
             label="Enter valid API"
             size="small"
             onChange={handleChange}
-            defaultValue={api || ''}
+            defaultValue={api ?? ''}
           />
         </FormControl>
       </div>
