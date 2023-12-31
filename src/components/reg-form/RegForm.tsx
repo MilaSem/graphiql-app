@@ -57,7 +57,10 @@ export const RegForm: FC = () => {
           ></input>
           <div className="error-string">
             {errors?.email?.message && (
-              <p>{dictionary.errors[errors.email.message] ?? 'Error'}</p>
+              <p>
+                {dictionary.errors[errors.email.message as keyof ErrorsKeys] ??
+                  'Error'}
+              </p>
             )}
           </div>
           <input
@@ -68,7 +71,11 @@ export const RegForm: FC = () => {
           ></input>
           <div className="error-string">
             {errors?.confirmEmail?.message && (
-              <p>{dictionary.errors[errors.confirmEmail.message] ?? 'Error'}</p>
+              <p>
+                {dictionary.errors[
+                  errors.confirmEmail.message as keyof ErrorsKeys
+                ] ?? 'Error'}
+              </p>
             )}
           </div>
           <input
@@ -80,7 +87,11 @@ export const RegForm: FC = () => {
           ></input>
           <div className="error-string">
             {errors?.password?.message && (
-              <p>{dictionary.errors[errors.password.message] ?? 'Error'}</p>
+              <p>
+                {dictionary.errors[
+                  errors.password.message as keyof ErrorsKeys
+                ] ?? 'Error'}
+              </p>
             )}
           </div>
           <input
@@ -93,7 +104,9 @@ export const RegForm: FC = () => {
           <div className="error-string">
             {errors?.confirmPassword?.message && (
               <p>
-                {dictionary.errors[errors.confirmPassword.message] ?? 'Error'}
+                {dictionary.errors[
+                  errors.confirmPassword.message as keyof ErrorsKeys
+                ] ?? 'Error'}
               </p>
             )}
           </div>

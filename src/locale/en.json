@@ -30,6 +30,15 @@
     "passwordConfirmRequired": "Confirm password",
     "error": "Error"
   },
-  "playground": {},
+  "playground": {
+    "request": "Request",
+    "response": "Response",
+    "inputApiLabel": "Enter valid API",
+    "graphQlRequestPlaceholder": "implement your code here (graphQl)",
+    "headers": "Headers",
+    "headersPlaceholder": "headers (JSON)",
+    "variables": "Variables",
+    "variablesPlaceholder": "variables (JSON)"
+  },
   "lang": "En"
 }

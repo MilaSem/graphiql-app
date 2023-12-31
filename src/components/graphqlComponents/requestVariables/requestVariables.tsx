@@ -1,9 +1,11 @@
-import React, { useState, type FC } from 'react';
+import React, { useState, type FC, useContext } from 'react';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { setVariables } from '../../../store/graphQl/graphQl.slice';
+import { LangContext } from '../../../locale/langContext';
 
 export const RequestVariables: FC = () => {
+  const { dictionary } = useContext(LangContext);
   const variables = useAppSelector((state) => state.graphQl.variables);
   const dispatch = useAppDispatch();
   const [err, SetErr] = useState(false);
@@ -31,7 +33,7 @@ export const RequestVariables: FC = () => {
           height={'calc(25vh - 48px)'}
           editable={true}
           lang="json"
-          placeholder={'variables (JSON)'}
+          placeholder={dictionary.playground.variablesPlaceholder}
         />
       </div>
     </>

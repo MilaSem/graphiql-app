@@ -14,11 +14,11 @@
     "submit": "Отправить"
   },
   "placeholders": {
-    "name": "Enter your name",
-    "email": "Enter email",
-    "confirmEmail": "Confirm emai",
-    "password": "Enter password",
-    "confirmPassword": "Confirm password"
+    "name": "Введите имя",
+    "email": "Введите email",
+    "confirmEmail": "Подтвердите emai",
+    "password": "Введите пароль",
+    "confirmPassword": "Подтвердите пароль"
   },
   "errors": {
     "nameRequired": "Введите имя",
@@ -30,6 +30,15 @@
     "passwordConfirmRequired": "Подтвердите пароль",
     "error": "Ошибка"
   },
-  "request": " Запрос",
+  "playground": {
+    "request": "Запрос",
+    "response": "Ответ",
+    "inputApiLabel": "Введите API",
+    "graphQlRequestPlaceholder": "введите ваш запрос здесь (graphQl)",
+    "headers": "Заголовки",
+    "headersPlaceholder": "заголовки (JSON)",
+    "variables": "Переменные",
+    "variablesPlaceholder": "переменные (JSON)"
+  },
   "lang": "Ру"
 }
