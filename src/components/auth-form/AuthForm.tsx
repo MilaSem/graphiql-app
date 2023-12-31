@@ -42,12 +42,12 @@ export const AuthForm: FC = () => {
         )
         : (
         <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
-          <h3 className="auth-header">{dictionary.user.signIn}</h3>
+          <h3 className="auth-header">{dictionary.auth.signIn}</h3>
 
           <input
             className="auth-input"
             type="text"
-            placeholder="Enter email"
+            placeholder={dictionary.placeholders.email}
             {...register('email')}
           ></input>
           <div className="error-string">
@@ -62,7 +62,7 @@ export const AuthForm: FC = () => {
             className="auth-input"
             type="password"
             role="textbox"
-            placeholder="Enter password"
+            placeholder={dictionary.placeholders.password}
             {...register('password')}
           ></input>
           <div className="error-string">
@@ -78,13 +78,13 @@ export const AuthForm: FC = () => {
           </div>
           <div className="buttons-container">
             <div>
-              <Link to={'/sign-up'}>{dictionary.user.signUp}</Link>
+              <Link to={'/sign-up'}>{dictionary.auth.signUp}</Link>
               <p className="auth-description">
-                {dictionary.user.ifNotRegister}
+                {dictionary.auth.ifNotRegister}
               </p>
             </div>
             <button type="submit" className="submit-button">
-              {dictionary.user.logIn}
+              {dictionary.auth.logIn}
             </button>
           </div>
           <div className="error-string">{customError}</div>

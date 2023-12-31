@@ -58,7 +58,7 @@ export const UserInfo: FC = () => {
               className="user-button-out"
               color="secondary"
             >
-              {dictionary.user.logOut}
+              {dictionary.auth.logOut}
             </Button>
           </Stack>
         </>
@@ -71,7 +71,7 @@ export const UserInfo: FC = () => {
           className="user-button"
         >
           <Link to={'/sign-in'} className="user-link">
-            {dictionary.user.signIn}
+            {dictionary.auth.signIn}
           </Link>
         </Button>
         )}

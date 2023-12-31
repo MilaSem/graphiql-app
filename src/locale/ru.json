@@ -3,12 +3,22 @@
     "welcome": "Главная",
     "playground": "Песочница"
   },
-  "user": {
+  "auth": {
     "signIn": "Войти",
     "signUp": "Регистрация",
     "logOut": "Выйти",
     "logIn": "Войти",
-    "ifNotRegister": "если вы не зарагистрированы"
+    "ifNotRegister": "если вы не зарагистрированы",
+    "ifRegistred": "если вы уже зарегистрированы",
+    "registration": "Регистрация",
+    "submit": "Отправить"
+  },
+  "placeholders": {
+    "name": "Enter your name",
+    "email": "Enter email",
+    "confirmEmail": "Confirm emai",
+    "password": "Enter password",
+    "confirmPassword": "Confirm password"
   },
   "errors": {
     "nameRequired": "Введите имя",

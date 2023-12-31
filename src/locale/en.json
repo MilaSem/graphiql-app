@@ -3,15 +3,25 @@
     "welcome": "Welcome",
     "playground": "Playground"
   },
-  "user": {
+  "auth": {
     "signIn": "SignIn",
     "signUp": "SignUp",
     "logOut": "LogOut",
     "logIn": "LogIn",
-    "ifNotRegister": "if you are not registred"
+    "ifNotRegister": "if you are not registred",
+    "ifRegistred": "if you are already registred",
+    "registration": "Registration",
+    "submit": "Submit"
+  },
+  "placeholders": {
+    "name": "Enter your name",
+    "email": "Enter email",
+    "confirmEmail": "Confirm emai",
+    "password": "Enter password",
+    "confirmPassword": "Confirm password"
   },
   "errors": {
-    "nameRequired": "Enter your name",
+    "nameRequired": "enter your name",
     "emailRequired": "Enter your email",
     "confirmEmailRequired": "Confirm your email",
     "emailMismatch": "Emails mismatch",
@@ -20,6 +30,6 @@
     "passwordConfirmRequired": "Confirm password",
     "error": "Error"
   },
-  "request": "request",
+  "playground": {},
   "lang": "En"
 }
