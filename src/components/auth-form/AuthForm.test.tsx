@@ -1,42 +1,30 @@
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { screen, fireEvent, act } from '@testing-library/react';
 import { AuthForm } from './AuthForm';
-import { BrowserRouter } from 'react-router-dom';
 import * as firebase from '../../firebase';
 import React from 'react';
+import { renderWithProvider } from '../../tests/funcs/renderWithProvider';
 
 describe('AuthForm component:', () => {
   it('Renders login form', async () => {
-    render(
-      <BrowserRouter>
-        <AuthForm />
-      </BrowserRouter>,
-    );
+    renderWithProvider(<AuthForm />);
     expect(await screen.findByRole('button')).toBeInTheDocument();
     expect(await screen.findAllByRole('textbox')).toHaveLength(2);
   });
   it('Check error message', async () => {
-    render(
-      <BrowserRouter>
-        <AuthForm />
-      </BrowserRouter>,
-    );
+    renderWithProvider(<AuthForm />);
     const button = await screen.findByRole('button');
     await act(async () => {
       fireEvent.click(button);
     });
-    expect(await screen.findByText(/enter your email/)).toBeInTheDocument();
+    expect(await screen.findByText(/enter your email/i)).toBeInTheDocument();
     expect(
-      await screen.findByText(/password must be at least 8 characters/),
+      await screen.findByText(/password must be at least 8 characters/i),
     ).toBeInTheDocument();
   });
   it('Check calling logIn', async () => {
     const spy = jest.spyOn(firebase, 'logIn');
-    render(
-      <BrowserRouter>
-        <AuthForm />
-      </BrowserRouter>,
-    );
+    renderWithProvider(<AuthForm />);
     const inputs = await screen.findAllByRole('textbox');
     const button = await screen.findByRole('button');
     await act(async () => {

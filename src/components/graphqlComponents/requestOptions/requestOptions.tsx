@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { type FC } from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
@@ -8,8 +8,10 @@ import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 import './requestOptions.scss';
 import { RequestHeaders } from '../requestHeaders/requestHeaders';
 import { RequestVariables } from '../requestVariables/requestVariables';
+import { LangContext } from '../../../locale/langContext';
 
 export const RequestOptions: FC = () => {
+  const { dictionary } = useContext(LangContext);
   const [isVisible, setVisible] = useState(false);
   const [isHeaders, setHeaders] = useState(true);
 
@@ -36,8 +38,12 @@ export const RequestOptions: FC = () => {
             exclusive
             onChange={toggleHeaders}
           >
-            <ToggleButton value={true}>Headers</ToggleButton>
-            <ToggleButton value={false}>Variables</ToggleButton>
+            <ToggleButton value={true}>
+              {dictionary.playground.headers}
+            </ToggleButton>
+            <ToggleButton value={false}>
+              {dictionary.playground.variables}
+            </ToggleButton>
           </ToggleButtonGroup>
           <IconButton
             onClick={expandEditors}

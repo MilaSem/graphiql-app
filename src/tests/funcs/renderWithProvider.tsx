@@ -4,11 +4,14 @@ import { Provider } from 'react-redux';
 import { store } from '../../store';
 import { BrowserRouter as Router } from 'react-router-dom';
 import React, { type ReactElement } from 'react';
+import { LangProvider } from '../../locale/langContext';
 
 export const renderWithProvider = (ui: ReactElement) => {
   return render(
-    <Provider store={store}>
-      <Router>{ui}</Router>
-    </Provider>,
+    <LangProvider>
+      <Provider store={store}>
+        <Router>{ui}</Router>
+      </Provider>
+    </LangProvider>,
   );
 };

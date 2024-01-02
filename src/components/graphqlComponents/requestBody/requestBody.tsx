@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { type FC } from 'react';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import Box from '@mui/material/Box';
@@ -8,8 +8,10 @@ import AutoFixHighRoundedIcon from '@mui/icons-material/AutoFixHighRounded';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { prettifyCode, setRequest } from '../../../store/graphQl/graphQl.slice';
 import './requestBody.scss';
+import { LangContext } from '../../../locale/langContext';
 
 export const RequestBody: FC = () => {
+  const { dictionary } = useContext(LangContext);
   const request = useAppSelector((state) => state.graphQl.request);
   const dispatch = useAppDispatch();
 
@@ -48,7 +50,7 @@ export const RequestBody: FC = () => {
           editable={true}
           lang="graphql"
           role="textbox"
-          placeholder={'implement your code here (graphQl)'}
+          placeholder={dictionary.playground.graphQlRequestPlaceholder}
         />
       </Box>
     </>

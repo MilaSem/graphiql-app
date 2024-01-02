@@ -26,7 +26,7 @@
     "forceConsistentCasingInFileNames": true,
     "useUnknownInCatchVariables": false
   },
-  "include": ["src", "src/test"],
+  "include": ["src"],
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -5,7 +5,8 @@
 }
 
 @mixin body-height {
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 140px);
+  // height: fit-content;
 }
 
 @mixin border-light {
