@@ -29,9 +29,15 @@ export const RequestBody: FC = () => {
   };
 
   const handleClick = async (): Promise<void> => {
-    await requestData(api, request, arrHeaders).then((data) =>
-      dispatch(setResponse(JSON.stringify(data, null, 2))),
-    );
+    if (arrHeaders[0][0] === 'wrong json') {
+      dispatch(
+        setResponse(JSON.stringify(Object.fromEntries(arrHeaders), null, 2)),
+      );
+    } else {
+      await requestData(api, request, arrHeaders).then((data) =>
+        dispatch(setResponse(JSON.stringify(data, null, 2))),
+      );
+    }
   };
 
   return (

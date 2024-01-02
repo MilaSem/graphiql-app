@@ -1,8 +1,7 @@
-import React from 'react';
 import { type FC } from 'react';
-import './responseSection.scss';
-import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import { useAppSelector } from '../../../store/hooks';
+import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
+import './responseSection.scss';
 
 export const ResponseSection: FC = () => {
   const response = useAppSelector((state) => state.graphQl.response);
@@ -15,6 +14,7 @@ export const ResponseSection: FC = () => {
           editable={false}
           height="62vh"
           placeholder={'{}'}
+          readOnly
         />
       </div>
     </>
