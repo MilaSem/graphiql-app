@@ -6,6 +6,7 @@ import {
   setHeaders,
   setRequest,
   setResponse,
+  setSchema,
   setVariables,
 } from './graphQl.slice';
 
@@ -17,6 +18,7 @@ describe('check actions in graphQlReduser', () => {
     variables: '',
     request: '',
     arrHeaders: [['Content-type', 'application/json']],
+    schema: '',
   };
   it('return initial state when passed empty event', () => {
     const result = graphQlReduser(undefined, { type: '' });
@@ -76,5 +78,10 @@ describe('check actions in graphQlReduser', () => {
     const action = { type: setVariables.type, payload: '{id: 10, page: 1}' };
     const result = graphQlReduser(initialState, action);
     expect(result.variables).toEqual('{id: 10, page: 1}');
+  });
+  it('change schema by setSchema', () => {
+    const action = { type: setSchema.type, payload: 'test schema' };
+    const result = graphQlReduser(initialState, action);
+    expect(result.schema).toEqual('test schema');
   });
 });
