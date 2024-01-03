@@ -2,7 +2,6 @@ import React, { Suspense, lazy, useState } from 'react';
 import { type FC } from 'react';
 import IconButton from '@mui/material/IconButton';
 import DescriptionIcon from '@mui/icons-material/Description';
-
 import './docsSection.scss';
 import { Loader } from '../loader/Loader';
 
@@ -16,7 +15,7 @@ export const DocsSection: FC = () => {
 
   return (
     <>
-      <aside className="aside">
+      <aside className={isVisible ? 'aside visible' : 'aside'}>
         <IconButton
           aria-label="docs"
           color={isVisible ? 'primary' : 'default'}

@@ -1,4 +1,13 @@
 .aside {
-  height: calc(100vh - 200px);
+  position: relative;
+  height: calc(100vh - 31px);
   padding: 0.5rem;
+  overflow: hidden;
+}
+
+.visible {
+  background-color: #f7f2b4;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  overflow-y: scroll;
 }
