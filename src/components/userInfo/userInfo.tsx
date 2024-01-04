@@ -10,6 +10,7 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import './userInfo.scss';
 import { LangContext } from '../../locale/langContext';
+import { Router } from '../../model/enums';
 
 export const UserInfo: FC = () => {
   const { dictionary } = useContext(LangContext);
@@ -30,12 +31,12 @@ export const UserInfo: FC = () => {
 
   const handleLogOut = async (): Promise<void> => {
     await logout();
-    navigate('/');
+    navigate(Router.welcome);
   };
 
   useEffect(() => {
     if (!user) {
-      navigate('/');
+      navigate(Router.welcome);
       return;
     }
     void fetchUserName();
@@ -70,7 +71,7 @@ export const UserInfo: FC = () => {
           color="secondary"
           className="user-button"
         >
-          <Link to={'/sign-in'} className="user-link">
+          <Link to={Router.signIn} className="user-link">
             {dictionary.auth.signIn}
           </Link>
         </Button>

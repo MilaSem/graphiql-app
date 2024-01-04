@@ -6,7 +6,7 @@ import React from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import LanguageRoundedIcon from '@mui/icons-material/LanguageRounded';
-import { Lang } from '../../model/enums';
+import { Lang, Router } from '../../model/enums';
 import { LangContext } from '../../locale/langContext';
 
 export const Header: FC = () => {
@@ -38,7 +38,7 @@ export const Header: FC = () => {
       <header className={clasName}>
         <nav className="header-nav">
           <NavLink
-            to={'/'}
+            to={Router.welcome}
             className={({ isActive }) =>
               isActive ? 'nav-item active' : 'nav-item'
             }
@@ -46,7 +46,7 @@ export const Header: FC = () => {
             {dictionary.header.welcome}
           </NavLink>
           <NavLink
-            to={'/qraphql'}
+            to={Router.graphQl}
             className={({ isActive }) =>
               isActive ? 'nav-item active' : 'nav-item'
             }

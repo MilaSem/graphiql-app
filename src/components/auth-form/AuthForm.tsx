@@ -10,6 +10,7 @@ import './AuthForm.scss';
 import React from 'react';
 import { LangContext } from '../../locale/langContext';
 import { type ErrorsKeys } from '../../model/interfaces';
+import { Router } from '../../model/enums';
 
 export const AuthForm: FC = () => {
   const { dictionary } = useContext(LangContext);
@@ -78,7 +79,7 @@ export const AuthForm: FC = () => {
           </div>
           <div className="buttons-container">
             <div>
-              <Link to={'/sign-up'}>{dictionary.auth.signUp}</Link>
+              <Link to={Router.signUp}>{dictionary.auth.signUp}</Link>
               <p className="auth-description">
                 {dictionary.auth.ifNotRegister}
               </p>
