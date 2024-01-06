@@ -8,3 +8,9 @@ export interface ErrorsKeys {
   passwordConfirmRequired: string
   error: string
 }
+
+export interface IDeveloper {
+  name: 'milaSem' | 'smetanDot' | 'annaFeona'
+  id: number
+  img: string
+}

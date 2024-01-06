@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { DocsSection } from '../../components/docsSection/docsSection';
 import { PlaygroundSection } from '../../components/graphqlComponents/playgroundSection/playgroundSection';
 import './playgroundPage.scss';
+import { Router } from '../../model/enums';
 
 export const PlaygroundPage: FC = () => {
   const [user] = useAuthState(auth);
@@ -14,7 +15,7 @@ export const PlaygroundPage: FC = () => {
 
   useEffect(() => {
     if (!user) {
-      navigate('/sign-in');
+      navigate(Router.signIn);
     }
   }, [user]);
 

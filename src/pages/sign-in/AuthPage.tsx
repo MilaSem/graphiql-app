@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
+import { Router } from '../../model/enums';
 
 export const AuthPage: FC = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ export const AuthPage: FC = () => {
 
   useEffect(() => {
     if (loading) return;
-    if (user) navigate('/qraphql');
+    if (user) navigate(Router.graphQl);
   }, [user, loading]);
 
   return <>{!user && <AuthForm />}</>;

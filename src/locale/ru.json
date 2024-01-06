@@ -40,5 +40,33 @@
     "variables": "Переменные",
     "variablesPlaceholder": "переменные (JSON)"
   },
+  "about": {
+    "project": {
+      "title": "GraphiQL — это игровая площадка для запросов graphQL",
+      "description": "GraphQL — это язык запросов для API и среда выполнения для выполнения этих запросов с вашими существующими данными. GraphQL предоставляет полное и понятное описание данных в вашем API, дает клиентам возможность запрашивать именно то, что им нужно, и ничего больше, упрощает развитие API с течением времени и предоставляет мощные инструменты разработчика.."
+    }
+  },
+  "welcome": {
+    "mainLink": "Попробовать GraphiQL",
+    "team": "Наша команда",
+    "project": "Мы студенты RS School. Это финальный проект курса RS School React."
+  },
+  "developers": {
+    "milaSem": {
+      "name": "Mila Semenovykh",
+      "jobTitle": "Frontend разработчик",
+      "description": "General ui"
+    },
+    "smetanDot": {
+      "name": "Andrey Smiatana",
+      "jobTitle": "Frontend разработчик",
+      "description": "GraphQl page, Firebase auth"
+    },
+    "annaFeona": {
+      "name": "Hanna Hlavatskikh",
+      "jobTitle": "Frontend разработчик",
+      "description": "Layout, welcome page .."
+    }
+  },
   "lang": "Ру"
 }

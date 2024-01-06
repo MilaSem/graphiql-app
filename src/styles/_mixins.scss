@@ -1,3 +1,5 @@
+@use './vars' as v;
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -6,10 +8,15 @@
 
 @mixin body-height {
   min-height: calc(100vh - 140px);
-  // height: fit-content;
 }
 
 @mixin border-light {
   border: 1px solid #ddd;
   border-radius: 0.5rem;
+}
+
+@mixin wrapper {
+  width: 100%;
+  margin: 0 auto;
+  max-width: v.$container-width;
 }

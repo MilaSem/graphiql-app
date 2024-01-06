@@ -7,7 +7,6 @@ import React from 'react';
 describe('Header component:', () => {
   it('renders header', () => {
     renderWithProvider(<Header />);
-    // expect(screen.getByRole('combobox')).toBeInTheDocument();
     expect(screen.getByRole('navigation')).toBeInTheDocument();
   });
   it('check animation of sticky header', async () => {

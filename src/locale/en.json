@@ -40,5 +40,33 @@
     "variables": "Variables",
     "variablesPlaceholder": "variables (JSON)"
   },
-  "lang": "En"
+  "lang": "En",
+  "about": {
+    "project": {
+      "title": "GraphiQL is a playground/IDE for graphQL requests.",
+      "description": "GraphiQL is a web-based playground for making GraphQL requests. It offers a user-friendly interface with features like syntax highlighting, auto-completion, and real-time response viewing. It allows developers to explore GraphQL APIs, debug queries, and collaborate on query development."
+    }
+  },
+  "welcome": {
+    "mainLink": "Try GraphiQL",
+    "team": "Our team",
+    "project": "We are students of RS School. Completed the task within the RS School React course."
+  },
+  "developers": {
+    "milaSem": {
+      "name": "Mila Semenovykh",
+      "jobTitle": "Frontend Developer",
+      "description": "General ui"
+    },
+    "smetanDot": {
+      "name": "Andrey Smiatana",
+      "jobTitle": "Frontend Developer",
+      "description": "GraphQl page, Firebase auth"
+    },
+    "annaFeona": {
+      "name": "Hanna Hlavatskikh",
+      "jobTitle": "Frontend developer",
+      "description": "Layout, welcome page .."
+    }
+  }
 }

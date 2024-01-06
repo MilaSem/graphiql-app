@@ -32,7 +32,6 @@ a {
 body {
   margin: 0;
   display: flex;
-  // place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -73,6 +72,11 @@ button:focus-visible {
 input {
   border-radius: 5px;
   border: 1px solid #777;
+}
+
+.wrapper {
+  @include mx.wrapper;
+  display: flex;
 }
 
 @media (prefers-color-scheme: light) {

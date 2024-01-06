@@ -9,6 +9,7 @@ import { Loader } from '../../components/loader/Loader';
 import React from 'react';
 import { LangContext } from '../../locale/langContext';
 import { type ErrorsKeys } from '../../model/interfaces';
+import { Router } from '../../model/enums';
 
 export const RegForm: FC = () => {
   const [, loading] = useAuthState(auth);
@@ -112,7 +113,7 @@ export const RegForm: FC = () => {
           </div>
           <div className="buttons-container">
             <div>
-              <Link to={'/sign-in'}>{dictionary.auth.signIn}</Link>
+              <Link to={Router.signIn}>{dictionary.auth.signIn}</Link>
               <p className="auth-description">{dictionary.auth.ifRegistred}</p>
             </div>
             <button type="submit" className="submit-button" disabled={!isValid}>

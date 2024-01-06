@@ -17,8 +17,6 @@ describe('PlaygroundPage component', () => {
     (useAuthState as jest.Mock).mockReturnValue([null, false, null]);
 
     renderWithProvider(<PlaygroundPage />);
-
-    // todo: fix error with typeerror
   });
 
   it('renders the PlaygroundPage component if user is authenticated', () => {
