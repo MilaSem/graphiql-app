@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
 import Button from '@mui/material/Button';
-// import './welcomeButtons.scss';
 import { LangContext } from '../../locale/langContext';
 import { Router } from '../../model/enums';
 
@@ -13,7 +12,6 @@ export const WelcomeButtons: FC = () => {
   const [btnTitle, setBtnTitle] = useState('');
   const [btnLink, setBtnLink] = useState('');
   const [user] = useAuthState(auth);
-  // const navigate = useNavigate();
 
   useEffect(() => {
     if (!user) {
@@ -28,7 +26,7 @@ export const WelcomeButtons: FC = () => {
   return (
     <Button
       variant="contained"
-      size="small"
+      size="medium"
       color="secondary"
       className="user-button"
     >

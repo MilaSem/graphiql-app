@@ -47,7 +47,26 @@
     }
   },
   "welcome": {
-    "mainLink": "Главная страница"
+    "mainLink": "Попробовать GraphiQL",
+    "team": "Наша команда",
+    "project": "Мы студенты RS School. Это финальный проект курса RS School React."
+  },
+  "developers": {
+    "milaSem": {
+      "name": "Mila Semenovykh",
+      "jobTitle": "Frontend разработчик",
+      "description": "General ui"
+    },
+    "smetanDot": {
+      "name": "Andrey Smiatana",
+      "jobTitle": "Frontend разработчик",
+      "description": "GraphQl page, Firebase auth"
+    },
+    "annaFeona": {
+      "name": "Hanna Hlavatskikh",
+      "jobTitle": "Frontend разработчик",
+      "description": "Layout, welcome page .."
+    }
   },
   "lang": "Ру"
 }

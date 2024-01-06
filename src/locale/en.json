@@ -48,6 +48,25 @@
     }
   },
   "welcome": {
-    "mainLink": "Main page"
+    "mainLink": "Try GraphiQL",
+    "team": "Our team",
+    "project": "We are students of RS School. Completed the task within the RS School React course."
+  },
+  "developers": {
+    "milaSem": {
+      "name": "Mila Semenovykh",
+      "jobTitle": "Frontend Developer",
+      "description": "General ui"
+    },
+    "smetanDot": {
+      "name": "Andrey Smiatana",
+      "jobTitle": "Frontend Developer",
+      "description": "GraphQl page, Firebase auth"
+    },
+    "annaFeona": {
+      "name": "Hanna Hlavatskikh",
+      "jobTitle": "Frontend developer",
+      "description": "Layout, welcome page .."
+    }
   }
 }

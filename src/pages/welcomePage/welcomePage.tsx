@@ -7,7 +7,11 @@ import { WelcomeButtons } from '../../components/welcomeButtons/welcomeButtons';
 
 export const WelcomePage: FC = () => {
   return (
-    <Box sx={{ minHeight: '90vh', gap: '1rem' }}>
+    <Box
+      flexDirection={'column'}
+      sx={{ minHeight: '90vh', gap: '1rem' }}
+      className="wrapper"
+    >
       <AboutProject />
       <WelcomeButtons />
       <AboutDevelopers />

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { type FC, useState, useEffect } from 'react';
+import { type FC, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db, logout } from '../../firebase';
@@ -8,29 +8,35 @@ import Button from '@mui/material/Button';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import './userInfo.scss';
 import { LangContext } from '../../locale/langContext';
 import { Router } from '../../model/enums';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { setUid } from '../../store/main/main.slice';
 
 export const UserInfo: FC = () => {
   const { dictionary } = useContext(LangContext);
-  const [name, setName] = useState('');
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const uid = useAppSelector((state) => state.main.uid);
+  const dispatch = useAppDispatch();
 
   const fetchUserName = async (): Promise<void> => {
     try {
       const q = query(collection(db, 'users'), where('uid', '==', user?.uid));
       const doc = await getDocs(q);
       const data = doc.docs[0].data();
-      setName(data.name);
+      dispatch(setUid(data.name));
     } catch (err) {
+      dispatch(setUid(''));
       console.error(err);
     }
   };
 
   const handleLogOut = async (): Promise<void> => {
     await logout();
+    dispatch(setUid(''));
     navigate(Router.welcome);
   };
 
@@ -47,17 +53,18 @@ export const UserInfo: FC = () => {
       {user
         ? (
         <>
-          <Stack direction="row" spacing={1}>
+          <Stack direction="row" spacing={1} flexWrap="wrap">
             <Avatar>
               <PersonRoundedIcon />
             </Avatar>
-            <h3 className="user-info">{name}</h3>
+            <h3 className="user-info">{uid}</h3>
             <Button
               variant="outlined"
               size="small"
               onClick={handleLogOut}
               className="user-button-out"
               color="secondary"
+              startIcon={<LogoutRoundedIcon />}
             >
               {dictionary.auth.logOut}
             </Button>

@@ -5,6 +5,7 @@ import './header.scss';
 import React from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 import LanguageRoundedIcon from '@mui/icons-material/LanguageRounded';
 import { Lang, Router } from '../../model/enums';
 import { LangContext } from '../../locale/langContext';
@@ -36,38 +37,47 @@ export const Header: FC = () => {
   return (
     <>
       <header className={clasName}>
-        <nav className="header-nav">
-          <NavLink
-            to={Router.welcome}
-            className={({ isActive }) =>
-              isActive ? 'nav-item active' : 'nav-item'
-            }
-          >
-            {dictionary.header.welcome}
-          </NavLink>
-          <NavLink
-            to={Router.graphQl}
-            className={({ isActive }) =>
-              isActive ? 'nav-item active' : 'nav-item'
-            }
-          >
-            {dictionary.header.playground}
-          </NavLink>
-        </nav>
+        <Box
+          className="wrapper"
+          justifyContent={'space-between'}
+          alignItems={'center'}
+        >
+          <nav className="header-nav">
+            <NavLink
+              to={Router.welcome}
+              className={({ isActive }) =>
+                isActive ? 'nav-item active' : 'nav-item'
+              }
+            >
+              {dictionary.header.welcome}
+            </NavLink>
+            <NavLink
+              to={Router.graphQl}
+              className={({ isActive }) =>
+                isActive ? 'nav-item active' : 'nav-item'
+              }
+            >
+              {dictionary.header.playground}
+            </NavLink>
+          </nav>
 
-        <Stack direction="row" spacing={2}>
-          <Button
-            variant="text"
-            size="small"
-            startIcon={<LanguageRoundedIcon />}
-            onClick={changeLang}
+          <Stack
+            direction="row"
+            spacing={2}
+            className="user-container"
+            flexWrap={'wrap'}
           >
-            {dictionary.lang}
-          </Button>
-          <div className="user-container">
+            <Button
+              variant="text"
+              size="small"
+              startIcon={<LanguageRoundedIcon />}
+              onClick={changeLang}
+            >
+              {dictionary.lang}
+            </Button>
             <UserInfo />
-          </div>
-        </Stack>
+          </Stack>
+        </Box>
       </header>
     </>
   );

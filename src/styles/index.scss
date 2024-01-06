@@ -75,6 +75,11 @@ input {
   border: 1px solid #777;
 }
 
+.wrapper {
+  @include mx.wrapper;
+  display: flex;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
