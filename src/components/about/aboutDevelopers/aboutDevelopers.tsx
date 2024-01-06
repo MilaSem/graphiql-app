@@ -13,12 +13,18 @@ export const AboutDevelopers: FC = () => {
 
   return (
     <>
-      <Typography variant="h4">{dictionary.welcome.team}</Typography>
-      <Typography variant="body1">{dictionary.welcome.project}</Typography>
-      <Stack direction={matches ? 'column' : 'row'} spacing={1}>
-        {DEVELOPERS.map((item) => (
-          <Developer developer={item} key={item.id} />
-        ))}
+      <Stack direction={'column'} spacing={4}>
+        <Typography variant="h4">{dictionary.welcome.team}</Typography>
+        <Typography variant="body1">{dictionary.welcome.project}</Typography>
+        <Stack
+          direction={matches ? 'column' : 'row'}
+          spacing={1}
+          paddingBottom={'2rem'}
+        >
+          {DEVELOPERS.map((item) => (
+            <Developer developer={item} key={item.id} />
+          ))}
+        </Stack>
       </Stack>
     </>
   );

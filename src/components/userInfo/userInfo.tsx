@@ -4,18 +4,20 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db, logout } from '../../firebase';
 import { query, collection, getDocs, where } from 'firebase/firestore';
-import Button from '@mui/material/Button';
-import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
-import './userInfo.scss';
 import { LangContext } from '../../locale/langContext';
 import { Router } from '../../model/enums';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setUid } from '../../store/main/main.slice';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+import './userInfo.scss';
 
 export const UserInfo: FC = () => {
+  const matches = useMediaQuery('(max-width:700px)');
   const { dictionary } = useContext(LangContext);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
@@ -53,20 +55,18 @@ export const UserInfo: FC = () => {
       {user
         ? (
         <>
-          <Stack direction="row" spacing={1} flexWrap="wrap">
-            <Avatar>
-              <PersonRoundedIcon />
-            </Avatar>
-            <h3 className="user-info">{uid}</h3>
+          <Stack direction="row" spacing={1}>
+            <Typography variant="h6" className="user-info">
+              {uid}
+            </Typography>
             <Button
               variant="outlined"
               size="small"
               onClick={handleLogOut}
               className="user-button-out"
               color="secondary"
-              startIcon={<LogoutRoundedIcon />}
             >
-              {dictionary.auth.logOut}
+              {matches ? <LogoutRoundedIcon /> : dictionary.auth.logOut}
             </Button>
           </Stack>
         </>

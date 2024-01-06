@@ -63,9 +63,8 @@ export const Header: FC = () => {
 
           <Stack
             direction="row"
-            spacing={2}
             className="user-container"
-            flexWrap={'wrap'}
+            alignItems={'center'}
           >
             <Button
               variant="text"
