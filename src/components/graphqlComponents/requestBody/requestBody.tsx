@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { type FC } from 'react';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import Box from '@mui/material/Box';
@@ -13,8 +13,10 @@ import {
 } from '../../../store/graphQl/graphQl.slice';
 import { requestData } from '../../../api/api';
 import './requestBody.scss';
+import { LangContext } from '../../../locale/langContext';
 
 export const RequestBody: FC = () => {
+  const { dictionary } = useContext(LangContext);
   const request = useAppSelector((state) => state.graphQl.request);
   const api = useAppSelector((state) => state.graphQl.apiUrl);
   const arrHeaders = useAppSelector((state) => state.graphQl.arrHeaders);
@@ -64,7 +66,7 @@ export const RequestBody: FC = () => {
           editable={true}
           lang="graphql"
           role="textbox"
-          placeholder={'implement your code here (graphQl)'}
+          placeholder={dictionary.playground.graphQlRequestPlaceholder}
         />
       </Box>
     </>

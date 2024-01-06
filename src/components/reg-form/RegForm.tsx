@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { useContext, type FC } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import { auth, registerUser } from '../../firebase';
@@ -7,9 +7,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaReg } from '../../yup/Schema';
 import { Loader } from '../../components/loader/Loader';
 import React from 'react';
+import { LangContext } from '../../locale/langContext';
+import { type ErrorsKeys } from '../../model/interfaces';
 
 export const RegForm: FC = () => {
   const [, loading] = useAuthState(auth);
+  const { dictionary } = useContext(LangContext);
 
   const {
     register,
@@ -31,65 +34,89 @@ export const RegForm: FC = () => {
         )
         : (
         <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
-          <h3 className="auth-header">Registration</h3>
+          <h3 className="auth-header">{dictionary.auth.registration}</h3>
           <input
             className="auth-input"
             type="text"
-            placeholder="Enter your name"
+            placeholder={dictionary.placeholders.name}
             {...register('name')}
           ></input>
           <div className="error-string">
-            {errors?.name && <p>{errors?.name?.message ?? 'Error'}</p>}
+            {errors?.name?.message && (
+              <p>
+                {dictionary.errors[errors.name.message as keyof ErrorsKeys] ??
+                  'Error'}
+              </p>
+            )}
           </div>
           <input
             className="auth-input"
             type="text"
-            placeholder="Enter email"
+            placeholder={dictionary.placeholders.email}
             {...register('email')}
           ></input>
           <div className="error-string">
-            {errors?.email && <p>{errors?.email?.message ?? 'Error'}</p>}
+            {errors?.email?.message && (
+              <p>
+                {dictionary.errors[errors.email.message as keyof ErrorsKeys] ??
+                  'Error'}
+              </p>
+            )}
           </div>
           <input
             className="auth-input"
             type="text"
-            placeholder="Confirm email"
+            placeholder={dictionary.placeholders.confirmEmail}
             {...register('confirmEmail')}
           ></input>
           <div className="error-string">
-            {errors?.confirmEmail && (
-              <p>{errors?.confirmEmail?.message ?? 'Error'}</p>
+            {errors?.confirmEmail?.message && (
+              <p>
+                {dictionary.errors[
+                  errors.confirmEmail.message as keyof ErrorsKeys
+                ] ?? 'Error'}
+              </p>
             )}
           </div>
           <input
             className="auth-input"
             type="password"
             role="textbox"
-            placeholder="Enter password"
+            placeholder={dictionary.placeholders.password}
             {...register('password')}
           ></input>
           <div className="error-string">
-            {errors?.password && <p>{errors?.password?.message ?? 'Error'}</p>}
+            {errors?.password?.message && (
+              <p>
+                {dictionary.errors[
+                  errors.password.message as keyof ErrorsKeys
+                ] ?? 'Error'}
+              </p>
+            )}
           </div>
           <input
             className="auth-input"
             type="password"
             role="textbox"
-            placeholder="Confirm password"
+            placeholder={dictionary.placeholders.confirmPassword}
             {...register('confirmPassword')}
           ></input>
           <div className="error-string">
-            {errors?.confirmPassword && (
-              <p>{errors?.confirmPassword?.message ?? 'Error'}</p>
+            {errors?.confirmPassword?.message && (
+              <p>
+                {dictionary.errors[
+                  errors.confirmPassword.message as keyof ErrorsKeys
+                ] ?? 'Error'}
+              </p>
             )}
           </div>
           <div className="buttons-container">
             <div>
-              <Link to={'/sign-in'}>Sign-in</Link>
-              <p className="auth-description">if you are already registred</p>
+              <Link to={'/sign-in'}>{dictionary.auth.signIn}</Link>
+              <p className="auth-description">{dictionary.auth.ifRegistred}</p>
             </div>
             <button type="submit" className="submit-button" disabled={!isValid}>
-              Submit
+              {dictionary.auth.submit}
             </button>
           </div>
         </form>

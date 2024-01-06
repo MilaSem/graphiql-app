@@ -1,12 +1,14 @@
-import React, { type FC } from 'react';
+import React, { type FC, useContext } from 'react';
 import { useAppSelector, useAppDispatch } from '../../../store/hooks';
 import {
   setHeaders,
   setArrHeaders,
 } from '../../../store/graphQl/graphQl.slice';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
+import { LangContext } from '../../../locale/langContext';
 
 export const RequestHeaders: FC = () => {
+  const { dictionary } = useContext(LangContext);
   const headers = useAppSelector((state) => state.graphQl.headers);
   const dispatch = useAppDispatch();
 
@@ -34,7 +36,7 @@ export const RequestHeaders: FC = () => {
           height={'calc(25vh - 48px)'}
           editable={true}
           lang="json"
-          placeholder={'headers (JSON)'}
+          placeholder={dictionary.playground.headersPlaceholder}
         />
       </div>
     </>
