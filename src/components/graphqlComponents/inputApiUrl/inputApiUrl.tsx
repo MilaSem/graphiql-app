@@ -1,4 +1,4 @@
-import React, { type FocusEvent, type FC, useContext } from 'react';
+import React, { type FocusEvent, type FC, useContext, useEffect } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
@@ -26,6 +26,14 @@ export const InputApiUrl: FC = () => {
     const schema = await requestIntSchema(`https://${val}`);
     dispatch(setSchema(printSchema(schema)));
   };
+
+  useEffect(() => {
+    if (api) {
+      void requestIntSchema(`https://${api}`).then((data) =>
+        dispatch(setSchema(printSchema(data))),
+      );
+    }
+  }, []);
 
   return (
     <>

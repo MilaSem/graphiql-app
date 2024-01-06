@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import {
   graphQlReduser,
+  setUid,
   setApiUrl,
   setArrHeaders,
   setHeaders,
@@ -12,6 +13,7 @@ import {
 
 describe('check actions in graphQlReduser', () => {
   const initialState = {
+    uid: '',
     apiUrl: '',
     response: '',
     headers: '',
@@ -23,6 +25,11 @@ describe('check actions in graphQlReduser', () => {
   it('return initial state when passed empty event', () => {
     const result = graphQlReduser(undefined, { type: '' });
     expect(result).toEqual(initialState);
+  });
+  it('change uid by setUid', () => {
+    const action = { type: setUid.type, payload: 'test uid' };
+    const result = graphQlReduser(initialState, action);
+    expect(result.uid).toEqual('test uid');
   });
   it('change apiUrl by setApiUrl', () => {
     const action = {
