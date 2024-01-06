@@ -37,11 +37,12 @@ export const RequestOptions: FC = () => {
             color="secondary"
             exclusive
             onChange={toggleHeaders}
+            aria-required
           >
-            <ToggleButton value={true}>
+            <ToggleButton value={true} selected={isHeaders}>
               {dictionary.playground.headers}
             </ToggleButton>
-            <ToggleButton value={false}>
+            <ToggleButton value={false} selected={!isHeaders}>
               {dictionary.playground.variables}
             </ToggleButton>
           </ToggleButtonGroup>

@@ -8,10 +8,19 @@ interface RequestErrors {
 
 export const initialState = {
   apiUrl: '',
+  headers: {
+    value: '',
+    display: '',
+  },
+  variables: {
+    value: '',
+    display: '',
+  },
+  request: {
+    value: '',
+    display: '',
+  },
   response: '',
-  headers: '',
-  variables: '',
-  request: '',
   arrHeaders: [['Content-type', 'application/json']],
   schema: '',
   errors: {
@@ -30,22 +39,25 @@ const graphQlSlice = createSlice({
       state.apiUrl = `https://${action.payload}`;
     },
     setRequest(state, action: PayloadAction<string>) {
-      state.request = action.payload;
+      state.request.value = action.payload;
+      // state.request.display = action.payload;
     },
     setHeaders(state, action: PayloadAction<string>) {
-      state.headers = action.payload;
+      state.headers.value = action.payload;
     },
     setVariables(state, action: PayloadAction<string>) {
-      state.variables = action.payload;
+      state.variables.value = action.payload;
+      if (state.variables.display === '') {
+        state.variables.display = action.payload;
+      }
     },
     setResponse(state, action: PayloadAction<string>) {
       state.response = action.payload;
     },
     prettifyCode(state) {
-      state.request = prettifyGraphQL(state.request);
-      state.response = prettifyJSON(state.response);
-      state.headers = prettifyJSON(state.headers);
-      state.variables = prettifyJSON(state.variables);
+      state.request.display = prettifyGraphQL(state.request.value);
+      state.headers.display = prettifyJSON(state.headers.value);
+      state.variables.display = prettifyJSON(state.variables.value);
     },
     setArrHeaders(state, action: PayloadAction<string[][]>) {
       state.arrHeaders = action.payload;
@@ -56,9 +68,14 @@ const graphQlSlice = createSlice({
     setErrors(state, action: PayloadAction<RequestErrors>) {
       state.errors[action.payload.key] = action.payload.error;
     },
-    resetErrors(state) {
-      for (const key in state.errors) {
-        state.errors[key] = '';
+    // todo: refactor this
+    resetErrors(state, action: PayloadAction<RequestErrors | null>) {
+      if (action.payload) {
+        state.errors[action.payload.key] = '';
+      } else {
+        for (const key in state.errors) {
+          state.errors[key] = '';
+        }
       }
     },
   },

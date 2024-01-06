@@ -15,20 +15,26 @@ export const RequestHeaders: FC = () => {
   const dispatch = useAppDispatch();
 
   const getHeaders = (value: string): void => {
+    console.log(value);
+
     if (!value) return;
     try {
       const headersJson = JSON.parse(value);
       const arr: string[][] = Object.entries(headersJson);
+      dispatch(setHeaders(value));
+      console.log(headers.value);
+
       dispatch(
         setArrHeaders([['Content-type', 'application/json']].concat(arr)),
       );
-      dispatch(resetErrors());
+      dispatch(resetErrors(null));
+      console.log(headersJson);
     } catch (error) {
       dispatch(setArrHeaders([['wrong json', error.message]]));
       dispatch(setErrors({ key: 'headers', error: error.message }));
       console.log(error.message);
     } finally {
-      dispatch(setHeaders(value));
+      // dispatch(setHeaders(value));
     }
   };
 
@@ -36,7 +42,7 @@ export const RequestHeaders: FC = () => {
     <>
       <div className="request-headers">
         <CodeMirrorEditor
-          value={headers}
+          value={headers.display}
           handleEditorValue={getHeaders}
           height={'calc(25vh - 48px)'}
           editable={true}

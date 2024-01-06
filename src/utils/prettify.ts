@@ -1,15 +1,30 @@
+const removeSpaces = (str: string): string => {
+  return str
+    .split('\n')
+    .filter((word) => word !== '')
+    .join('')
+    .split(' ')
+    .filter((word) => word !== '')
+    .join(' ');
+};
+
 export const prettifyGraphQL = (query: string): string => {
   let result = '';
   let level = 0;
   let insideString = false;
+  const newQuery = removeSpaces(query);
 
-  for (const char of query) {
+  console.log(newQuery);
+
+  for (const char of newQuery) {
     switch (char) {
       case '{':
-        result += ` {\n${'  '.repeat(++level)}`;
+        result = result.trim() + ` {\n${' '.repeat(level)}`;
+        level++;
         break;
       case '}':
-        result = result.trimRight() + `\n${'  '.repeat(--level)}}`;
+        level--;
+        result = result.trim() + `\n${' '.repeat(level)}}\n`;
         break;
       case ',':
         result += `,\n${'  '.repeat(level)}`;
@@ -18,52 +33,21 @@ export const prettifyGraphQL = (query: string): string => {
         insideString = !insideString;
         result += '"';
         break;
-      case '\n':
-      case ' ':
-        if (!insideString) {
-          continue;
-        }
-      // eslint-disable-next-line no-fallthrough
       default:
         result += char;
     }
   }
+
+  console.log(result);
 
   return result.trim();
 };
 
 export function prettifyJSON(jsonString: string): string {
-  let result = '';
-  let indentLevel = 0;
-  let insideString = false;
+  if (!jsonString) return '';
+  const json = JSON.parse(jsonString);
+  const result = JSON.stringify(json, null, 2);
+  console.log(result);
 
-  for (const char of jsonString) {
-    switch (char) {
-      case '{':
-      case '[':
-        result += char + '\n' + '  '.repeat(++indentLevel);
-        break;
-      case '}':
-      case ']':
-        result = result.trimRight() + '\n' + '  '.repeat(--indentLevel) + char;
-        break;
-      case ',':
-        result += ',\n' + '  '.repeat(indentLevel);
-        break;
-      case '"':
-        insideString = !insideString;
-        result += '"';
-        break;
-      case '\n':
-      case ' ':
-        if (!insideString) {
-          continue;
-        }
-      // eslint-disable-next-line no-fallthrough
-      default:
-        result += char;
-    }
-  }
-
-  return result.trim();
+  return result;
 }

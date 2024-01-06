@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { type FC } from 'react';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import Box from '@mui/material/Box';
@@ -36,11 +36,12 @@ export const RequestBody: FC = () => {
         setResponse(JSON.stringify(Object.fromEntries(arrHeaders), null, 2)),
       );
     } else {
-      await requestData(api, request, arrHeaders).then((data) =>
+      await requestData(api, request.value, arrHeaders).then((data) =>
         dispatch(setResponse(JSON.stringify(data, null, 2))),
       );
     }
   };
+  useEffect(() => {}, [request.value]);
 
   return (
     <>
@@ -61,7 +62,7 @@ export const RequestBody: FC = () => {
 
         <CodeMirrorEditor
           handleEditorValue={getGrqphQlRequest}
-          value={request}
+          value={request.display}
           height={'40vh'}
           editable={true}
           lang="graphql"
