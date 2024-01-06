@@ -26,7 +26,10 @@ export const CodeMirrorEditor: FC<CodeMirrorEditorProps> = ({
     handleEditorValue(val);
   };
 
-  useEffect(() => {}, [value]);
+  useEffect(() => {
+    setValue(value);
+  }, [value]);
+
   return (
     <>
       <div className="request-headers">

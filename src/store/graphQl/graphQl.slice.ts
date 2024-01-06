@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { prettifyGraphQL, prettifyJSON } from '../../utils/prettify';
 
@@ -8,18 +9,9 @@ interface RequestErrors {
 
 export const initialState = {
   apiUrl: '',
-  headers: {
-    value: '',
-    display: '',
-  },
-  variables: {
-    value: '',
-    display: '',
-  },
-  request: {
-    value: '',
-    display: '',
-  },
+  headers: '',
+  variables: '',
+  request: '',
   response: '',
   arrHeaders: [['Content-type', 'application/json']],
   schema: '',
@@ -39,25 +31,25 @@ const graphQlSlice = createSlice({
       state.apiUrl = `https://${action.payload}`;
     },
     setRequest(state, action: PayloadAction<string>) {
-      state.request.value = action.payload;
-      // state.request.display = action.payload;
+      state.request = action.payload;
     },
     setHeaders(state, action: PayloadAction<string>) {
-      state.headers.value = action.payload;
+      state.headers = action.payload;
     },
     setVariables(state, action: PayloadAction<string>) {
-      state.variables.value = action.payload;
-      if (state.variables.display === '') {
-        state.variables.display = action.payload;
-      }
+      state.variables = action.payload;
     },
     setResponse(state, action: PayloadAction<string>) {
       state.response = action.payload;
     },
     prettifyCode(state) {
-      state.request.display = prettifyGraphQL(state.request.value);
-      state.headers.display = prettifyJSON(state.headers.value);
-      state.variables.display = prettifyJSON(state.variables.value);
+      const request = prettifyGraphQL(state.request);
+      const headers = prettifyJSON(state.headers);
+      const variables = prettifyJSON(state.variables);
+
+      state.request = request;
+      state.headers = headers;
+      state.variables = variables;
     },
     setArrHeaders(state, action: PayloadAction<string[][]>) {
       state.arrHeaders = action.payload;
@@ -68,7 +60,6 @@ const graphQlSlice = createSlice({
     setErrors(state, action: PayloadAction<RequestErrors>) {
       state.errors[action.payload.key] = action.payload.error;
     },
-    // todo: refactor this
     resetErrors(state, action: PayloadAction<RequestErrors | null>) {
       if (action.payload) {
         state.errors[action.payload.key] = '';

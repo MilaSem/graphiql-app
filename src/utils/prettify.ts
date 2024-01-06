@@ -14,8 +14,6 @@ export const prettifyGraphQL = (query: string): string => {
   let insideString = false;
   const newQuery = removeSpaces(query);
 
-  console.log(newQuery);
-
   for (const char of newQuery) {
     switch (char) {
       case '{':
@@ -38,8 +36,6 @@ export const prettifyGraphQL = (query: string): string => {
     }
   }
 
-  console.log(result);
-
   return result.trim();
 };
 
@@ -47,7 +43,6 @@ export function prettifyJSON(jsonString: string): string {
   if (!jsonString) return '';
   const json = JSON.parse(jsonString);
   const result = JSON.stringify(json, null, 2);
-  console.log(result);
 
   return result;
 }
