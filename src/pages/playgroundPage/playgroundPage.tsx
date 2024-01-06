@@ -7,6 +7,7 @@ import { DocsSection } from '../../components/docsSection/docsSection';
 import { PlaygroundSection } from '../../components/graphqlComponents/playgroundSection/playgroundSection';
 import './playgroundPage.scss';
 import { Router } from '../../model/enums';
+import Box from '@mui/material/Box';
 
 export const PlaygroundPage: FC = () => {
   const [user] = useAuthState(auth);
@@ -21,10 +22,10 @@ export const PlaygroundPage: FC = () => {
 
   return (
     <>
-      <div className="playground-page">
+      <Box className="playground-page wrapper">
         <DocsSection />
         <PlaygroundSection />
-      </div>
+      </Box>
     </>
   );
 };

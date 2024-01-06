@@ -3,6 +3,6 @@
 .main {
   width: 100%;
   display: flex;
-  @include mx.body-height;
   padding: 1rem 2rem;
+  @include mx.body-height;
 }
