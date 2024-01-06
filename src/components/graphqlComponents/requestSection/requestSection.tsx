@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { type FC } from 'react';
-
 import './requestSection.scss';
 import { InputApiUrl } from '../inputApiUrl/inputApiUrl';
 import { RequestBody } from '../requestBody/requestBody';

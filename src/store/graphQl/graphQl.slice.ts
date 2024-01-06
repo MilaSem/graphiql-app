@@ -6,6 +6,8 @@ export const initialState = {
   headers: '',
   variables: '',
   request: '',
+  arrHeaders: [['Content-type', 'application/json']],
+  schema: '',
 };
 
 // todo: implement this functions and replace to UTILS
@@ -42,6 +44,12 @@ const graphQlSlice = createSlice({
       state.headers = prettifyJson(state.headers);
       state.variables = prettifyJson(state.variables);
     },
+    setArrHeaders(state, action: PayloadAction<string[][]>) {
+      state.arrHeaders = action.payload;
+    },
+    setSchema(state, action: PayloadAction<string>) {
+      state.schema = action.payload;
+    },
   },
 });
 
@@ -52,5 +60,7 @@ export const {
   setVariables,
   setResponse,
   prettifyCode,
+  setArrHeaders,
+  setSchema,
 } = graphQlSlice.actions;
 export const graphQlReduser = graphQlSlice.reducer;

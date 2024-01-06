@@ -2,5 +2,9 @@
 
 .codemirror {
   @include mx.border-light;
-  overflow: hidden;
+}
+
+.request-headers {
+  position: relative;
+  width: 100%;
 }
