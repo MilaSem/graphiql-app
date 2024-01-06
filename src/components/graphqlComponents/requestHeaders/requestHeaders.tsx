@@ -3,6 +3,8 @@ import { useAppSelector, useAppDispatch } from '../../../store/hooks';
 import {
   setHeaders,
   setArrHeaders,
+  setErrors,
+  resetErrors,
 } from '../../../store/graphQl/graphQl.slice';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import { LangContext } from '../../../locale/langContext';
@@ -20,8 +22,11 @@ export const RequestHeaders: FC = () => {
       dispatch(
         setArrHeaders([['Content-type', 'application/json']].concat(arr)),
       );
+      dispatch(resetErrors());
     } catch (error) {
       dispatch(setArrHeaders([['wrong json', error.message]]));
+      dispatch(setErrors({ key: 'headers', error: error.message }));
+      console.log(error.message);
     } finally {
       dispatch(setHeaders(value));
     }

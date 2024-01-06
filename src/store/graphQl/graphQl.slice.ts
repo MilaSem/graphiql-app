@@ -1,4 +1,10 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { prettifyGraphQL, prettifyJSON } from '../../utils/prettify';
+
+interface RequestErrors {
+  key: 'request' | 'headers' | 'variables'
+  error: string
+}
 
 export const initialState = {
   apiUrl: '',
@@ -8,15 +14,12 @@ export const initialState = {
   request: '',
   arrHeaders: [['Content-type', 'application/json']],
   schema: '',
-};
-
-// todo: implement this functions and replace to UTILS
-const prettifyGraphQl = (val: string): string => {
-  return val.trim();
-};
-
-const prettifyJson = (val: string): string => {
-  return val.trim();
+  errors: {
+    request: '',
+    headers: '',
+    variables: '',
+  },
+  isPrettty: false,
 };
 
 const graphQlSlice = createSlice({
@@ -39,16 +42,24 @@ const graphQlSlice = createSlice({
       state.response = action.payload;
     },
     prettifyCode(state) {
-      state.request = prettifyGraphQl(state.request);
-      state.response = prettifyJson(state.response);
-      state.headers = prettifyJson(state.headers);
-      state.variables = prettifyJson(state.variables);
+      state.request = prettifyGraphQL(state.request);
+      state.response = prettifyJSON(state.response);
+      state.headers = prettifyJSON(state.headers);
+      state.variables = prettifyJSON(state.variables);
     },
     setArrHeaders(state, action: PayloadAction<string[][]>) {
       state.arrHeaders = action.payload;
     },
     setSchema(state, action: PayloadAction<string>) {
       state.schema = action.payload;
+    },
+    setErrors(state, action: PayloadAction<RequestErrors>) {
+      state.errors[action.payload.key] = action.payload.error;
+    },
+    resetErrors(state) {
+      for (const key in state.errors) {
+        state.errors[key] = '';
+      }
     },
   },
 });
@@ -62,5 +73,7 @@ export const {
   prettifyCode,
   setArrHeaders,
   setSchema,
+  setErrors,
+  resetErrors,
 } = graphQlSlice.actions;
 export const graphQlReduser = graphQlSlice.reducer;
