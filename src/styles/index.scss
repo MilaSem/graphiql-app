@@ -16,6 +16,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root::-webkit-scrollbar {
+  width: 0;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -44,10 +48,6 @@ h5,
 h6,
 p {
   margin: 0;
-}
-
-::-webkit-scrollbar {
-  width: 0;
 }
 
 button {

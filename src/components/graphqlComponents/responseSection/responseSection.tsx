@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
 import { type FC } from 'react';
-
-import './responseSection.scss';
-import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import { useAppSelector } from '../../../store/hooks';
+import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
+import './responseSection.scss';
 import { LangContext } from '../../../locale/langContext';
 
 export const ResponseSection: FC = () => {
@@ -19,6 +18,7 @@ export const ResponseSection: FC = () => {
           editable={false}
           height="62vh"
           placeholder={'{}'}
+          readOnly
         />
       </div>
     </>

@@ -1,6 +1,9 @@
-import React, { useState, type FC, useContext } from 'react';
+import React, { type FC, useContext } from 'react';
 import { useAppSelector, useAppDispatch } from '../../../store/hooks';
-import { setHeaders } from '../../../store/graphQl/graphQl.slice';
+import {
+  setHeaders,
+  setArrHeaders,
+} from '../../../store/graphQl/graphQl.slice';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import { LangContext } from '../../../locale/langContext';
 
@@ -8,19 +11,19 @@ export const RequestHeaders: FC = () => {
   const { dictionary } = useContext(LangContext);
   const headers = useAppSelector((state) => state.graphQl.headers);
   const dispatch = useAppDispatch();
-  const [err, SetErr] = useState(false);
 
   const getHeaders = (value: string): void => {
     if (!value) return;
     try {
       const headersJson = JSON.parse(value);
-      dispatch(setHeaders(value));
-      console.log(headers, headersJson);
-      SetErr(false);
+      const arr: string[][] = Object.entries(headersJson);
+      dispatch(
+        setArrHeaders([['Content-type', 'application/json']].concat(arr)),
+      );
     } catch (error) {
-      // todo: implement with snackbar
-      SetErr(true);
-      console.log('wrong json', error.message);
+      dispatch(setArrHeaders([['wrong json', error.message]]));
+    } finally {
+      dispatch(setHeaders(value));
     }
   };
 
@@ -28,7 +31,7 @@ export const RequestHeaders: FC = () => {
     <>
       <div className="request-headers">
         <CodeMirrorEditor
-          value={!err && headers ? headers : ''}
+          value={headers}
           handleEditorValue={getHeaders}
           height={'calc(25vh - 48px)'}
           editable={true}

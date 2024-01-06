@@ -1,6 +1,5 @@
 import React from 'react';
 import { type FC } from 'react';
-
 import './notFoundPage.scss';
 
 export const NotFoundPage: FC = () => {
