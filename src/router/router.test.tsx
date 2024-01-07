@@ -4,6 +4,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { routerConfig } from './router';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Router } from '../model/enums';
 
 jest.mock('react-firebase-hooks/auth');
 
@@ -24,7 +25,7 @@ describe('Router tests:', () => {
     (useAuthState as jest.Mock).mockReturnValueOnce([mockUser, false, null]);
 
     const memoryRouter = createMemoryRouter(routerConfig, {
-      initialEntries: ['/'],
+      initialEntries: [Router.welcome],
     });
     render(<RouterProvider router={memoryRouter} />);
     expect(screen.getByText(/graphiql/i)).toBeInTheDocument();
@@ -34,7 +35,7 @@ describe('Router tests:', () => {
     const mockUser = { uid: 'testUid' };
     (useAuthState as jest.Mock).mockReturnValueOnce([mockUser, false, null]);
     const memoryRouter = createMemoryRouter(routerConfig, {
-      initialEntries: ['/qraphql'],
+      initialEntries: [Router.graphQl],
     });
     await waitFor(() => {
       render(<RouterProvider router={memoryRouter} />);
@@ -43,10 +44,8 @@ describe('Router tests:', () => {
   });
 
   it('renders NotFoundPage for unknown route', () => {
-    const mockUser = { uid: 'testUid' };
-    (useAuthState as jest.Mock).mockReturnValueOnce([mockUser, false, null]);
     const memoryRouter = createMemoryRouter(routerConfig, {
-      initialEntries: ['/badRoute'],
+      initialEntries: ['badRoute'],
     });
     render(<RouterProvider router={memoryRouter} />);
     expect(screen.getByText(/404 Not Found/i)).toBeInTheDocument();
