@@ -1,11 +1,7 @@
 import React, { useState, type FC, useContext } from 'react';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import {
-  // resetErrors,
-  // setErrors,
-  setVariables,
-} from '../../../store/graphQl/graphQl.slice';
+import { setVariables } from '../../../store/graphQl/graphQl.slice';
 import { LangContext } from '../../../locale/langContext';
 import { AlertMessage } from '../../alertMessage/alertMessage';
 
@@ -28,10 +24,8 @@ export const RequestVariables: FC = () => {
     try {
       JSON.parse(value);
       dispatch(setVariables(value));
-      // dispatch(resetErrors(null));
       setErr('');
     } catch (error) {
-      // dispatch(setErrors({ key: 'variables', error: error.message }));
       dispatch(setVariables(''));
       showError(
         `${

@@ -6,13 +6,13 @@ import { auth, db, logout } from '../../firebase';
 import { query, collection, getDocs, where } from 'firebase/firestore';
 import { LangContext } from '../../locale/langContext';
 import { Router } from '../../model/enums';
-// import { useAppDispatch, useAppSelector } from '../../store/hooks';
-// import { setUid } from '../../store/graphQl/graphQl.slice';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { type AlertColor } from '@mui/material/Alert';
+import { AlertMessage } from '../alertMessage/alertMessage';
 
 import './userInfo.scss';
 
@@ -22,8 +22,13 @@ export const UserInfo: FC = () => {
   const [user] = useAuthState(auth);
   const [userName, setUserName] = useState('');
   const navigate = useNavigate();
-  // const uid = useAppSelector((state) => state.graphQl.uid);
-  // const dispatch = useAppDispatch();
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarType, setSnackbarType] = useState<AlertColor | undefined>();
+
+  const showAlert = (message: string, type: AlertColor | undefined): void => {
+    setSnackbarMessage(message);
+    setSnackbarType(type);
+  };
 
   const fetchUserName = async (): Promise<void> => {
     try {
@@ -31,13 +36,16 @@ export const UserInfo: FC = () => {
       const doc = await getDocs(q);
       const data = doc.docs[0].data();
       setUserName(data.name);
+      showAlert(`User ${userName} logged in`, 'success');
     } catch (err) {
+      showAlert(err, 'error');
       console.error(err);
     }
   };
 
   const handleLogOut = async (): Promise<void> => {
     await logout();
+    showAlert('You logged out', 'info');
     navigate(Router.welcome);
   };
 
@@ -53,22 +61,20 @@ export const UserInfo: FC = () => {
     <>
       {user
         ? (
-        <>
-          <Stack direction="row" spacing={1}>
-            <Typography variant="h6" className="user-info">
-              {userName}
-            </Typography>
-            <Button
-              variant="outlined"
-              size="small"
-              onClick={handleLogOut}
-              className="user-button-out"
-              color="secondary"
-            >
-              {matches ? <LogoutRoundedIcon /> : dictionary.auth.logOut}
-            </Button>
-          </Stack>
-        </>
+        <Stack direction="row" spacing={1}>
+          <Typography variant="h6" className="user-info">
+            {userName}
+          </Typography>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={handleLogOut}
+            className="user-button-out"
+            color="secondary"
+          >
+            {matches ? <LogoutRoundedIcon /> : dictionary.auth.logOut}
+          </Button>
+        </Stack>
         )
         : (
         <Button
@@ -82,6 +88,7 @@ export const UserInfo: FC = () => {
           </Link>
         </Button>
         )}
+      <AlertMessage type={snackbarType} message={snackbarMessage} />
     </>
   );
 };

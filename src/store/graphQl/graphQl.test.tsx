@@ -21,11 +21,6 @@ describe('check actions in graphQlReduser', () => {
     request: '',
     arrHeaders: [['Content-type', 'application/json']],
     schema: '',
-    // errors: {
-    //   headers: '',
-    //   variables: '',
-    //   request: '',
-    // },
   };
   it('return initial state when passed empty event', () => {
     const result = graphQlReduser(undefined, { type: '' });

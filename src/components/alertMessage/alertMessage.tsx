@@ -1,7 +1,5 @@
 import React, { useEffect, type FC } from 'react';
 import Snackbar from '@mui/material/Snackbar';
-// import IconButton from '@mui/material/IconButton';
-// import CloseIcon from '@mui/icons-material/Close';
 import MuiAlert, {
   type AlertColor,
   type AlertProps,
@@ -23,24 +21,12 @@ export const AlertMessage: FC<ErrorSnackbarProps> = ({ message, type }) => {
     _event?: React.SyntheticEvent | Event,
     reason?: string,
   ): void => {
-    if (reason === 'clickaway') {
+    if (reason === 'clickaway' || reason === 'timeout') {
       return;
     }
 
     setOpen(false);
   };
-  // const action = (
-  //   <>
-  //     <IconButton
-  //       size="small"
-  //       aria-label="close"
-  //       color="inherit"
-  //       onClick={handleClose}
-  //     >
-  //       <CloseIcon fontSize="small" />
-  //     </IconButton>
-  //   </>
-  // );
 
   const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
     function Alert(props, ref) {
@@ -53,8 +39,8 @@ export const AlertMessage: FC<ErrorSnackbarProps> = ({ message, type }) => {
       open={open}
       autoHideDuration={6000}
       message={message}
-      // action={action}
-      // anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+      onClose={handleClose}
     >
       <Alert onClose={handleClose} severity={type} sx={{ width: '100%' }}>
         {message}

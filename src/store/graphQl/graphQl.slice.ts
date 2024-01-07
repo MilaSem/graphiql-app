@@ -16,11 +16,6 @@ export const initialState = {
   response: '',
   arrHeaders: [['Content-type', 'application/json']],
   schema: '',
-  // errors: {
-  //   request: '',
-  //   headers: '',
-  //   variables: '',
-  // },
 };
 
 const graphQlSlice = createSlice({
@@ -60,18 +55,6 @@ const graphQlSlice = createSlice({
     setSchema(state, action: PayloadAction<string>) {
       state.schema = action.payload;
     },
-    // setErrors(state, action: PayloadAction<RequestErrors>) {
-    //   state.errors[action.payload.key] = action.payload.error;
-    // },
-    // resetErrors(state, action: PayloadAction<RequestErrors | null>) {
-    //   if (action.payload) {
-    //     state.errors[action.payload.key] = '';
-    //   } else {
-    //     for (const key in state.errors) {
-    //       state.errors[key as ErrorKeys] = '';
-    //     }
-    //   }
-    // },
   },
 });
 
@@ -85,7 +68,5 @@ export const {
   prettifyCode,
   setArrHeaders,
   setSchema,
-  // setErrors,
-  // resetErrors,
 } = graphQlSlice.actions;
 export const graphQlReduser = graphQlSlice.reducer;
