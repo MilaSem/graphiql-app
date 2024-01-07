@@ -17,3 +17,9 @@
     flex-direction: column;
   }
 }
+
+@media (max-width: 540px) {
+  .playground-section {
+    width: 100%;
+  }
+}

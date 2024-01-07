@@ -1,6 +1,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState = {
+  uid: '',
   apiUrl: '',
   response: '',
   headers: '',
@@ -23,6 +24,9 @@ const graphQlSlice = createSlice({
   name: 'graphQl',
   initialState,
   reducers: {
+    setUid(state, action: PayloadAction<string>) {
+      state.uid = action.payload;
+    },
     setApiUrl(state, action: PayloadAction<string>) {
       state.apiUrl = `https://${action.payload}`;
     },
@@ -54,6 +58,7 @@ const graphQlSlice = createSlice({
 });
 
 export const {
+  setUid,
   setApiUrl,
   setRequest,
   setHeaders,
