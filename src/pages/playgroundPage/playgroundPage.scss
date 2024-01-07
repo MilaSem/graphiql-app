@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: row;
   align-items: start;
-
   width: 100%;
+}
+
+@media (max-width: 540px) {
+  .playground-page {
+    flex-direction: column;
+  }
 }

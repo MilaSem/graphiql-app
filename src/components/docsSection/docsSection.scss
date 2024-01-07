@@ -11,3 +11,14 @@
   border-radius: 0.5rem;
   overflow-y: scroll;
 }
+
+@media (max-width: 540px) {
+  .aside {
+    height: 60px;
+  }
+
+  .visible {
+    height: 300px;
+    margin-bottom: 1rem;
+  }
+}

@@ -8,6 +8,7 @@ export interface RequestErrors {
 }
 
 export const initialState = {
+  uid: '',
   apiUrl: '',
   headers: '',
   variables: '',
@@ -26,6 +27,9 @@ const graphQlSlice = createSlice({
   name: 'graphQl',
   initialState,
   reducers: {
+    setUid(state, action: PayloadAction<string>) {
+      state.uid = action.payload;
+    },
     setApiUrl(state, action: PayloadAction<string>) {
       state.apiUrl = `https://${action.payload}`;
     },
@@ -72,6 +76,7 @@ const graphQlSlice = createSlice({
 });
 
 export const {
+  setUid,
   setApiUrl,
   setRequest,
   setHeaders,

@@ -6,6 +6,8 @@ import { auth, db, logout } from '../../firebase';
 import { query, collection, getDocs, where } from 'firebase/firestore';
 import { LangContext } from '../../locale/langContext';
 import { Router } from '../../model/enums';
+// import { useAppDispatch, useAppSelector } from '../../store/hooks';
+// import { setUid } from '../../store/graphQl/graphQl.slice';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
@@ -20,6 +22,8 @@ export const UserInfo: FC = () => {
   const [user] = useAuthState(auth);
   const [userName, setUserName] = useState('');
   const navigate = useNavigate();
+  // const uid = useAppSelector((state) => state.graphQl.uid);
+  // const dispatch = useAppDispatch();
 
   const fetchUserName = async (): Promise<void> => {
     try {
