@@ -1,20 +1,29 @@
-import React, { type FC, useContext } from 'react';
+import React, { type FC, useContext, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../../../store/hooks';
 import {
   setHeaders,
   setArrHeaders,
-  setErrors,
-  resetErrors,
+  // setErrors,
+  // resetErrors,
 } from '../../../store/graphQl/graphQl.slice';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import { LangContext } from '../../../locale/langContext';
+import { AlertMessage } from '../../alertMessage/alertMessage';
 
 export const RequestHeaders: FC = () => {
   const { dictionary } = useContext(LangContext);
   const headers = useAppSelector((state) => state.graphQl.headers);
-  const err = useAppSelector((state) => state.graphQl.errors.headers);
+  const [err, setErr] = useState('');
 
   const dispatch = useAppDispatch();
+
+  const showError = (message: string): void => {
+    setErr(message);
+  };
+
+  const closeError = (): void => {
+    setErr('');
+  };
 
   const getHeaders = (value: string): void => {
     if (!value) return;
@@ -26,11 +35,17 @@ export const RequestHeaders: FC = () => {
       dispatch(
         setArrHeaders([['Content-type', 'application/json']].concat(arr)),
       );
-      dispatch(resetErrors(null));
+      // dispatch(resetErrors(null));
     } catch (error) {
       dispatch(setArrHeaders([['wrong json', error.message]]));
-      dispatch(setErrors({ key: 'headers', error: error.message }));
-      console.log(error.message, err);
+      // dispatch(setErrors({ key: 'headers', error: error.message }));
+      showError(
+        `${
+          dictionary.playground.headers
+        } ${dictionary.errors.error.toLowerCase()}: ${
+          dictionary.playground.wrongJSON
+        }`,
+      );
     }
   };
 
@@ -38,6 +53,7 @@ export const RequestHeaders: FC = () => {
     <>
       <div className="request-headers">
         <CodeMirrorEditor
+          onFocus={closeError}
           value={headers}
           handleEditorValue={getHeaders}
           height={'calc(25vh - 48px)'}
@@ -46,6 +62,7 @@ export const RequestHeaders: FC = () => {
           placeholder={dictionary.playground.headersPlaceholder}
         />
       </div>
+      <AlertMessage message={err} type="error" onClose={closeError} />
     </>
   );
 };

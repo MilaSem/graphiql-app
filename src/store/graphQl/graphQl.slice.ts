@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { prettifyGraphQL, prettifyJSON } from '../../utils/prettify';
 
-interface RequestErrors {
-  key: 'request' | 'headers' | 'variables'
+export type ErrorKeys = 'request' | 'headers' | 'variables';
+export interface RequestErrors {
+  key: ErrorKeys
   error: string
 }
 
@@ -15,12 +15,11 @@ export const initialState = {
   response: '',
   arrHeaders: [['Content-type', 'application/json']],
   schema: '',
-  errors: {
-    request: '',
-    headers: '',
-    variables: '',
-  },
-  isPrettty: false,
+  // errors: {
+  //   request: '',
+  //   headers: '',
+  //   variables: '',
+  // },
 };
 
 const graphQlSlice = createSlice({
@@ -57,18 +56,18 @@ const graphQlSlice = createSlice({
     setSchema(state, action: PayloadAction<string>) {
       state.schema = action.payload;
     },
-    setErrors(state, action: PayloadAction<RequestErrors>) {
-      state.errors[action.payload.key] = action.payload.error;
-    },
-    resetErrors(state, action: PayloadAction<RequestErrors | null>) {
-      if (action.payload) {
-        state.errors[action.payload.key] = '';
-      } else {
-        for (const key in state.errors) {
-          state.errors[key] = '';
-        }
-      }
-    },
+    // setErrors(state, action: PayloadAction<RequestErrors>) {
+    //   state.errors[action.payload.key] = action.payload.error;
+    // },
+    // resetErrors(state, action: PayloadAction<RequestErrors | null>) {
+    //   if (action.payload) {
+    //     state.errors[action.payload.key] = '';
+    //   } else {
+    //     for (const key in state.errors) {
+    //       state.errors[key as ErrorKeys] = '';
+    //     }
+    //   }
+    // },
   },
 });
 
@@ -81,7 +80,7 @@ export const {
   prettifyCode,
   setArrHeaders,
   setSchema,
-  setErrors,
-  resetErrors,
+  // setErrors,
+  // resetErrors,
 } = graphQlSlice.actions;
 export const graphQlReduser = graphQlSlice.reducer;

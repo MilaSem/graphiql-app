@@ -38,7 +38,8 @@
     "headers": "Headers",
     "headersPlaceholder": "headers (JSON)",
     "variables": "Variables",
-    "variablesPlaceholder": "variables (JSON)"
+    "variablesPlaceholder": "variables (JSON)",
+    "wrongJSON": "Invalid JSON"
   },
   "lang": "En",
   "about": {

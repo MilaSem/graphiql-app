@@ -2,33 +2,44 @@ import React, { useState, type FC, useContext } from 'react';
 import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import {
-  resetErrors,
-  setErrors,
+  // resetErrors,
+  // setErrors,
   setVariables,
 } from '../../../store/graphQl/graphQl.slice';
 import { LangContext } from '../../../locale/langContext';
+import { AlertMessage } from '../../alertMessage/alertMessage';
 
 export const RequestVariables: FC = () => {
   const { dictionary } = useContext(LangContext);
   const variables = useAppSelector((state) => state.graphQl.variables);
   const dispatch = useAppDispatch();
-  const [, SetErr] = useState(false);
+  const [err, setErr] = useState('');
+
+  const showError = (message: string): void => {
+    setErr(message);
+  };
+
+  const closeError = (): void => {
+    setErr('');
+  };
 
   const getVariables = (value: string): void => {
     if (!value) return;
     try {
-      // todo: implemend transformation
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const variablesJSON = JSON.parse(value);
+      JSON.parse(value);
       dispatch(setVariables(value));
-      dispatch(resetErrors(null));
-      SetErr(false);
+      // dispatch(resetErrors(null));
+      setErr('');
     } catch (error) {
-      // todo: implement with snackbar
-      dispatch(setErrors({ key: 'variables', error: error.message }));
-      SetErr(true);
+      // dispatch(setErrors({ key: 'variables', error: error.message }));
       dispatch(setVariables(''));
-      console.log('wrong json', error.message);
+      showError(
+        `${
+          dictionary.playground.variables
+        } ${dictionary.errors.error.toLowerCase()}: ${
+          dictionary.playground.wrongJSON
+        }`,
+      );
     }
   };
 
@@ -36,6 +47,7 @@ export const RequestVariables: FC = () => {
     <>
       <div className="request-variables">
         <CodeMirrorEditor
+          onFocus={closeError}
           value={variables}
           handleEditorValue={getVariables}
           height={'calc(25vh - 48px)'}
@@ -44,6 +56,7 @@ export const RequestVariables: FC = () => {
           placeholder={dictionary.playground.variablesPlaceholder}
         />
       </div>
+      <AlertMessage message={err} type="error" onClose={closeError} />
     </>
   );
 };
