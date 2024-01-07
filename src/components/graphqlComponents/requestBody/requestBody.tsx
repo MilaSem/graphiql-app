@@ -41,7 +41,6 @@ export const RequestBody: FC = () => {
       );
     }
   };
-
   return (
     <>
       <Box className="request-body">
@@ -60,8 +59,8 @@ export const RequestBody: FC = () => {
         </Box>
 
         <CodeMirrorEditor
-          handleEditorValue={getGrqphQlRequest}
           value={request}
+          handleEditorValue={getGrqphQlRequest}
           height={'40vh'}
           editable={true}
           lang="graphql"

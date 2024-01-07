@@ -38,7 +38,8 @@
     "headers": "Заголовки",
     "headersPlaceholder": "заголовки (JSON)",
     "variables": "Переменные",
-    "variablesPlaceholder": "переменные (JSON)"
+    "variablesPlaceholder": "переменные (JSON)",
+    "wrongJSON": "Неверный JSON"
   },
   "about": {
     "project": {

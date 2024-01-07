@@ -3,32 +3,46 @@ import { CodeMirrorEditor } from '../../codemirrorEditot/codemirrorEditor';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { setVariables } from '../../../store/graphQl/graphQl.slice';
 import { LangContext } from '../../../locale/langContext';
+import { AlertMessage } from '../../alertMessage/alertMessage';
 
 export const RequestVariables: FC = () => {
   const { dictionary } = useContext(LangContext);
   const variables = useAppSelector((state) => state.graphQl.variables);
   const dispatch = useAppDispatch();
-  const [err, SetErr] = useState(false);
+  const [err, setErr] = useState('');
+
+  const showError = (message: string): void => {
+    setErr(message);
+  };
+
+  const closeError = (): void => {
+    setErr('');
+  };
 
   const getVariables = (value: string): void => {
     if (!value) return;
     try {
-      // todo: implemend transformation
-      const variablesJSON = JSON.parse(value);
-      console.log(variablesJSON);
+      JSON.parse(value);
       dispatch(setVariables(value));
-      SetErr(false);
+      setErr('');
     } catch (error) {
-      // todo: implement with snackbar
-      SetErr(true);
-      console.log('wrong json', error.message);
+      dispatch(setVariables(''));
+      showError(
+        `${
+          dictionary.playground.variables
+        } ${dictionary.errors.error.toLowerCase()}: ${
+          dictionary.playground.wrongJSON
+        }`,
+      );
     }
   };
+
   return (
     <>
       <div className="request-variables">
         <CodeMirrorEditor
-          value={!err && variables ? variables : ''}
+          onFocus={closeError}
+          value={variables}
           handleEditorValue={getVariables}
           height={'calc(25vh - 48px)'}
           editable={true}
@@ -36,6 +50,7 @@ export const RequestVariables: FC = () => {
           placeholder={dictionary.playground.variablesPlaceholder}
         />
       </div>
+      <AlertMessage message={err} type="error" onClose={closeError} />
     </>
   );
 };

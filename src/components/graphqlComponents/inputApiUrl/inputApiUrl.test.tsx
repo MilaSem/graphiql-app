@@ -1,10 +1,11 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { screen, fireEvent, act } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { InputApiUrl } from './inputApiUrl';
 import { renderWithProvider } from '../../../tests/funcs/renderWithProvider';
 import * as hooks from '../../../store/hooks';
 import fetch from 'jest-fetch-mock';
+import { act } from 'react-dom/test-utils';
 
 describe('InputApiUrl component', () => {
   beforeEach(() => {
@@ -32,7 +33,7 @@ describe('InputApiUrl component', () => {
   it('check value at local storage', async () => {
     fetch.mockResponseOnce(JSON.stringify({ data: '12345' }));
     const spy = jest.spyOn(hooks, 'useAppDispatch');
-    localStorage.setItem('api', 'https://rickandmortyapi.com/graphql');
+    localStorage.setItem('api', 'rickandmortyapi.com/graphql');
     renderWithProvider(<InputApiUrl />);
     expect(spy).toHaveBeenCalled();
   });
