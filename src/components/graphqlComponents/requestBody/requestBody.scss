@@ -1,0 +1,12 @@
+.request-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.request-body-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 0.5rem;
+}

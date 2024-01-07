@@ -1,0 +1,3 @@
+describe('NotFound page:', () => {
+  it('', () => {});
+});

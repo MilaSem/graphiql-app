@@ -1,0 +1,73 @@
+{
+  "header": {
+    "welcome": "Главная",
+    "playground": "Песочница"
+  },
+  "auth": {
+    "signIn": "Войти",
+    "signUp": "Регистрация",
+    "logOut": "Выйти",
+    "logIn": "Войти",
+    "ifNotRegister": "если вы не зарагистрированы",
+    "ifRegistred": "если вы уже зарегистрированы",
+    "registration": "Регистрация",
+    "submit": "Отправить"
+  },
+  "placeholders": {
+    "name": "Введите имя",
+    "email": "Введите email",
+    "confirmEmail": "Подтвердите emai",
+    "password": "Введите пароль",
+    "confirmPassword": "Подтвердите пароль"
+  },
+  "errors": {
+    "nameRequired": "Введите имя",
+    "emailRequired": "Введите email",
+    "confirmEmailRequired": "Подтвердите email",
+    "emailMismatch": "Email не совпадает",
+    "passwordRequired": "Введите пароль",
+    "passwordMismatch": "Пароли не совпадают",
+    "passwordConfirmRequired": "Подтвердите пароль",
+    "error": "Ошибка"
+  },
+  "playground": {
+    "request": "Запрос",
+    "response": "Ответ",
+    "inputApiLabel": "Введите API",
+    "graphQlRequestPlaceholder": "введите ваш запрос здесь (graphQl)",
+    "headers": "Заголовки",
+    "headersPlaceholder": "заголовки (JSON)",
+    "variables": "Переменные",
+    "variablesPlaceholder": "переменные (JSON)",
+    "wrongJSON": "Неверный JSON"
+  },
+  "about": {
+    "project": {
+      "title": "GraphiQL — это игровая площадка для запросов graphQL",
+      "description": "GraphQL — это язык запросов для API и среда выполнения для выполнения этих запросов с вашими существующими данными. GraphQL предоставляет полное и понятное описание данных в вашем API, дает клиентам возможность запрашивать именно то, что им нужно, и ничего больше, упрощает развитие API с течением времени и предоставляет мощные инструменты разработчика.."
+    }
+  },
+  "welcome": {
+    "mainLink": "Попробовать GraphiQL",
+    "team": "Наша команда",
+    "project": "Мы студенты RS School. Это финальный проект курса RS School React."
+  },
+  "developers": {
+    "milaSem": {
+      "name": "Mila Semenovykh",
+      "jobTitle": "Frontend разработчик",
+      "description": "General ui"
+    },
+    "smetanDot": {
+      "name": "Andrey Smiatana",
+      "jobTitle": "Frontend разработчик",
+      "description": "GraphQl page, Firebase auth"
+    },
+    "annaFeona": {
+      "name": "Hanna Hlavatskikh",
+      "jobTitle": "Frontend разработчик",
+      "description": "Layout, welcome page .."
+    }
+  },
+  "lang": "Ру"
+}

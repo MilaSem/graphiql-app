@@ -1,0 +1,39 @@
+.aside {
+  position: relative;
+  height: 100%;
+  max-height: calc(65vh + 225px);
+  min-height: calc(100vh - 140px);
+  padding: 0.5rem;
+  overflow: hidden;
+}
+
+.visible {
+  background-color: #282c34;
+  border: 1px solid #444;
+  border-radius: 0.5rem;
+  overflow-y: scroll;
+}
+
+@media (max-width: 540px) {
+  .aside {
+    height: 60px;
+    width: 100%;
+    min-height: 60px;
+  }
+
+  .visible {
+    height: 300px;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  .visible {
+    background-color: #f7f2b4;
+    border: 1px solid #ddd;
+  }
+}

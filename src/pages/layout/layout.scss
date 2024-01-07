@@ -1,0 +1,8 @@
+@use '../../styles/mixins' as mx;
+
+.main {
+  width: 100%;
+  display: flex;
+  padding: 1rem 2rem;
+  @include mx.body-height;
+}

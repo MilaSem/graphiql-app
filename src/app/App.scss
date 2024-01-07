@@ -1,0 +1,11 @@
+@use '../styles/mixins' as mx;
+@use '../styles/vars' as v;
+
+#root {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}

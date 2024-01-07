@@ -1,0 +1,12 @@
+.request-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  bottom: 0;
+  left: 0;
+}
+
+.request-options-buttons {
+  display: flex;
+  justify-content: space-between;
+}

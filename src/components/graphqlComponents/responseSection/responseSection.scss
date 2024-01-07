@@ -1,0 +1,14 @@
+.response-section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: relative;
+  gap: 2rem;
+  width: calc(40% - 1rem);
+}
+
+@media (max-width: 678px) {
+  .response-section {
+    width: 100%;
+  }
+}
