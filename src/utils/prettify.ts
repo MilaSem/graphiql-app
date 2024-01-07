@@ -1,4 +1,4 @@
-const removeSpaces = (str: string): string => {
+export const removeSpaces = (str: string): string => {
   return str
     .split('\n')
     .filter((word) => word !== '')

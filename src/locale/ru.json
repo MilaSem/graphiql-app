@@ -40,7 +40,6 @@
     "variables": "Переменные",
     "variablesPlaceholder": "переменные (JSON)",
     "wrongJSON": "Неверный JSON"
-
   },
   "about": {
     "project": {
